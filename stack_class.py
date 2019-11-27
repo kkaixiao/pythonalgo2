@@ -20,7 +20,6 @@ class Stack(object):
         return len(self.items)
 
 
-
 s = Stack()
 
 print(s.isEmpty())
