@@ -27,7 +27,8 @@ q.enque(2)
 print(q.isEmpty())
 print(q.size())
 
-q.deque()
+print(q.deque())
+
 print(q.size())
 
 q.deque()
