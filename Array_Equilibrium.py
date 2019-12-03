@@ -1,27 +1,37 @@
 
 def equilibrium(arr):
-    diffs = []
-    for p in range(len(arr)):
+
+    p = 1
+    left = sum(arr[:p])
+    right = sum(arr[p:])
+
+    pre_diff = abs(right - left)
+    curr_diff = pre_diff
+    while curr_diff <= pre_diff:
+        pre_diff = curr_diff
+        p += 1
         left = sum(arr[:p])
         right = sum(arr[p:])
-        diffs.append((p, abs(left-right)))
+        curr_diff = abs(right - left)
+        # print(p)
 
-    # print(diffs)
 
-    lowest_diff = diffs[0][1]
-    lowest_index = 0
-    # print(lowest)
-    for item in diffs:
-        if item[1] < lowest_diff:
-            lowest_diff = item[1]
-            lowest_index = item[0]
 
-    print(lowest_index, lowest_diff)
-    return lowest_index
+    return p -1
+
+    # while curr_diff > pre_diff:
 
 
 
 
-arr1= [3, 1, 2, 4, 3]
+
+
+
+
+
+# arr1= [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+
+arr1= [8, 2, 3, 1, 2, 3, 3, 1, 2, 4, 3]
+print(abs(sum(arr1[:5]) - sum(arr1[5:])))
 
 print(equilibrium(arr1))
