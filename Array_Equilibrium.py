@@ -1,23 +1,27 @@
 
 def equilibrium(arr):
 
-    p = 1
-    left = sum(arr[:p])
-    right = sum(arr[p:])
+    sum_left = arr[0]
+    sum_right = sum(arr) - arr[0]
 
-    pre_diff = abs(right - left)
-    curr_diff = pre_diff
-    while curr_diff <= pre_diff:
-        pre_diff = curr_diff
-        p += 1
-        left = sum(arr[:p])
-        right = sum(arr[p:])
-        curr_diff = abs(right - left)
-        # print(p)
+    diff = abs(sum_left - sum_right)
+    p = 0
+
+    for i in range(1, len(arr)):
+        sum_left += arr[i]
+        sum_right -= arr[i]
+
+        curr_diff = abs(sum_left - sum_right)
+
+        if diff > curr_diff:
+            diff = curr_diff
+            p = i
+
+    return diff, p+1
 
 
 
-    return p -1
+    # return p
 
     # while curr_diff > pre_diff:
 
@@ -29,9 +33,9 @@ def equilibrium(arr):
 
 
 
-# arr1= [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+arr1= [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
 
-arr1= [8, 2, 3, 1, 2, 3, 3, 1, 2, 4, 3]
-print(abs(sum(arr1[:5]) - sum(arr1[5:])))
+# arr1= [3, 1, 2, 4, 3]
+# print(abs(sum(arr1[:5]) - sum(arr1[5:])))
 
 print(equilibrium(arr1))
