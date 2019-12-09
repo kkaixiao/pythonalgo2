@@ -3,6 +3,7 @@ def maxNumberOfBalloons(text, balloon_str='balloon'):
     count = 0
 
     for _, char in enumerate(text):
+
         if char in balloon_list_check:
             balloon_list_check.remove(char)
 
