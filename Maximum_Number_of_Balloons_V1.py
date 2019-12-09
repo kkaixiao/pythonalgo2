@@ -14,12 +14,4 @@ def maxNumberOfBalloons(text, balloon_str='balloon'):
     return count
 
 
-def cleanString(text, balloon_str='balloon'):
-    text_list = list(text)
-    for char in text_list:
-        if char not in balloon_str:
-            text_list.remove(char)
-
-    return str(text_list)
-
-print(maxNumberOfBalloons(cleanString('loonbalxballpoonballtdoon')))
+print(maxNumberOfBalloons('loonbalxballpoonballtdoo'))
