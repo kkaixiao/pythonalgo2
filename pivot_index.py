@@ -20,8 +20,7 @@ def pivot_index(nums):
     if len(nums) == 0:
         return -1
 
-    left = 0
-    right = sum(nums) - nums[0]
+    left, right = 0, sum(nums) - nums[0]
 
     if left == right:
         return 0
