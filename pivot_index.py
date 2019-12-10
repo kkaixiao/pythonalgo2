@@ -11,6 +11,7 @@ def pivot_index(nums):
             return i + 1
 
 
-
 my_nums = [1, 7, 3, 6, 5, 6]
+
+
 print(pivot_index(my_nums))
