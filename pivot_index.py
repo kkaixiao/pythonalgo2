@@ -16,11 +16,12 @@ Each element nums[i] will be an integer in the range [-1000, 1000].
 '''
 
 def pivot_index(nums):
-    left = 0
-    right = sum(nums) - nums[0]
 
     if len(nums) == 0:
         return -1
+
+    left = 0
+    right = sum(nums) - nums[0]
 
     if left == right:
         return 0
