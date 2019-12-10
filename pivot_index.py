@@ -9,6 +9,8 @@ def pivot_index(nums):
         if left == right:
             return i + 1
 
+    return -1
+
 
 my_nums = [1, 7, 3, 6, 5, 6]
 
