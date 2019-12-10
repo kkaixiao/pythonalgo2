@@ -1,9 +1,10 @@
 
 
 # recursion version of max number of balloons
-# I think there's something wrong, but at least the whole logic is built
+# The bugs should be removed
 
-def maxNumberOfBalloons(text_list, balloon_str='balloon', count=0):
+
+def max_number_of_balloons(text_list, balloon_str='balloon', count=0):
     if len(text_list) < len(balloon_str):
         return count
 
@@ -15,9 +16,10 @@ def maxNumberOfBalloons(text_list, balloon_str='balloon', count=0):
             text_list.remove(char)
 
             if len(balloon_list_check) == 0:
-                return maxNumberOfBalloons(text_list, 'balloon', count+1)
+                return max_number_of_balloons(text_list, 'balloon', count+1)
 
-def cleanString(text, balloon_str='balloon'):
+
+def clean_string(text, balloon_str='balloon'):
     balloon_list = balloon_str
     text_list = list(text)
     for char in text_list:
@@ -27,4 +29,4 @@ def cleanString(text, balloon_str='balloon'):
 
 input_str = 'abfereerhoolnlbsdfdbabalooolnllnooaoolln'
 
-print(maxNumberOfBalloons(list(cleanString(input_str))))
+print(max_number_of_balloons(list(clean_string(input_str))))
