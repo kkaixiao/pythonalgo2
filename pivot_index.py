@@ -1,4 +1,3 @@
-
 def pivot_index(nums):
     left = 0
     right = sum(nums) - nums[0]
