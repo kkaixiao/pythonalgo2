@@ -7,7 +7,7 @@
 # And the 5 is (2+3),
 # and so on!
 
-# we now use iteration approach to solve this problem
+# we now use iteration approach to solve this problem.
 
 
 def fibonacci(n):
