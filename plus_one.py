@@ -20,6 +20,9 @@ def plus_one(digits):
     # if the modulus of 10 to this digit is 0, set the carry flag to True
     if digits[len(digits)-1] % 10 == 0:
         is_carry = True
+    else:
+        # in this case, we can directly return the result
+        return digits
 
     for i in range(len(digits)-2, -1, -1):
         # if there's a carry flag, we increment the 2nd lowest digit by 1
@@ -31,14 +34,17 @@ def plus_one(digits):
         if digits[i] % 10 == 0 and is_carry:
             is_carry = True
         else:
+            # we can then set the carry flag to False and break the for loop
             is_carry = False
+            break
 
+    # there's carry flag for the leftmost digit, we can insert a digit of 1 to it
     if is_carry:
         digits.insert(0, 1)
     return digits
 
 
 
-my_digits = [9,9,9,9]
+my_digits = [9,9,9,5]
 
 print(plus_one(my_digits))
