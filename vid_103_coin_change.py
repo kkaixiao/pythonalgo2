@@ -46,8 +46,9 @@ def rec_coin(target, coins):
 
     else:
 
-        # for every coin value that is <= than target
-        for i in [c for c in coins if c <= target]:
+        # all valid coins are the ones of value less than or equal to the amount of target
+        valid_coins = [valid_coin for valid_coin in coins if valid_coin <= target]
+        for i in valid_coins:
 
             # Recursive Call (add a count coin and subtract from the target)
             num_coins = 1 + rec_coin(target - i, coins)
