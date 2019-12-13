@@ -14,9 +14,9 @@ def play_rock_paper_scissors():
 
     computer_hand = randint(0,2)
 
-    result = matrix_combination[str(your_hand) + str(computer_hand)]
+    res = matrix_combination[str(your_hand) + str(computer_hand)]
 
-    return matrix_hands[your_hand], matrix_hands[computer_hand], matrix_results[result]
+    return matrix_hands[your_hand], matrix_hands[computer_hand], matrix_results[res]
 
 
 result = play_rock_paper_scissors()
