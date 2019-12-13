@@ -10,7 +10,7 @@ def pascal_triangle(n):
 
     pre_line = res[1]
 
-    for i in range(n-1):
+    for i in range(n-2):
 
         current_line = pre_line.copy()
         current_line.append(1)
