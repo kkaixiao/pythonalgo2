@@ -25,4 +25,4 @@ def pascal_triangle(n):
     return res
 
 
-print(pascal_triangle(5))
+print(pascal_triangle(1))
