@@ -21,4 +21,4 @@ def calculate_pascal_triangle_row(prev):
     return res
 
 
-print(pascal_triangle(1))
+print(pascal_triangle(6))
