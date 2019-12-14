@@ -24,22 +24,21 @@ def single_num_xor(nums):
 
 
 def single_num_index(nums):
-    i = 0
     while len(nums) > 0:
         try:
-            if nums[i+1:].index(nums[i]) >= 0:
-                nums.pop(nums[i+1:].index(nums[i]))
-                nums.pop(i)
-                i += 1
+            if nums[1:].index(nums[0]) >= 0:
+                nums.pop(nums[1:].index(nums[0])+1)
+                nums.pop(0)
         except ValueError:
-            return nums[i]
+            return nums[0]
 
 
 
-arr1 = [2,5,2,1,5]
+arr1 = [2,5,2,5,1]
 arr2 = [4,1,2,1,2]
-arr3 = [2,5,2,1,5]
+arr3 = [2,5,2,8,5,8,9]
+arr4 = [2, 2, 1]
 
 
 # print(single_num_xor(arr2))
-print(single_num_index(arr1))
+print(single_num_index(arr4))
