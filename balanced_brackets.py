@@ -23,6 +23,8 @@ def balanced_brackets(brackets):
     for item in brackets:
         if item in left_brackets:
             detect_stack.append(item)
+        if item in right_brackets and len(detect_stack) == 0:
+            return 'Unbalanced'
         if item in right_brackets and right_to_left_dict[item] == detect_stack[len(detect_stack) - 1]:
             detect_stack.pop()
 
@@ -36,6 +38,6 @@ arr1 = '{[]{()}}'       # balanced
 arr2 = '[{}{}(]'        # unbalanced
 arr3 = '(}(}'           # unbalanced
 arr4 = '({)}'           # unbalanced
-arr5 = '([]){}({()})'   # balanced
+arr5 = '[)'   # balanced
 
 print(balanced_brackets(arr5))
