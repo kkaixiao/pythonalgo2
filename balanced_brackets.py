@@ -38,6 +38,7 @@ arr1 = '{[]{()}}'       # balanced
 arr2 = '[{}{}(]'        # unbalanced
 arr3 = '(}(}'           # unbalanced
 arr4 = '({)}'           # unbalanced
-arr5 = '[)'   # balanced
+arr5 = '[)'             # unbalanced
+arr6 = '{{{[]}}}}'      # unbalanced
 
-print(balanced_brackets(arr5))
+print(balanced_brackets(arr6))
