@@ -18,22 +18,24 @@ def balanced_brackets(brackets):
     right_brackets = '})]'
     right_to_left_dict = {'}': '{', ')': '(', ']': '['}
 
-    my_stack = []
+    detect_stack = []
 
     for item in brackets:
         if item in left_brackets:
-            my_stack.append(item)
-        if item in right_brackets and right_to_left_dict[item] == my_stack[len(my_stack) - 1]:
-            my_stack.pop()
+            detect_stack.append(item)
+        if item in right_brackets and right_to_left_dict[item] == detect_stack[len(detect_stack) - 1]:
+            detect_stack.pop()
 
-    if len(my_stack) == 0:
+    if len(detect_stack) == 0:
         return 'Balanced'
     else:
         return 'Unbalanced'
 
 
-arr1 = '{[]{()}}'  # balanced
-arr2 = '[{}{}(]'   # unbalanced
-arr3 = '(}(}'      # unbalanced
+arr1 = '{[]{()}}'       # balanced
+arr2 = '[{}{}(]'        # unbalanced
+arr3 = '(}(}'           # unbalanced
+arr4 = '({)}'           # unbalanced
+arr5 = '([]){}({()})'   # balanced
 
-print(balanced_brackets(arr3))
+print(balanced_brackets(arr5))
