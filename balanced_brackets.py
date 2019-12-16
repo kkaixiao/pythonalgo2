@@ -41,4 +41,4 @@ arr4 = '({)}'           # unbalanced
 arr5 = '[)'             # unbalanced
 arr6 = '{{{[]}}}}'      # unbalanced
 
-print(balanced_brackets(arr6))
+print(balanced_brackets(arr5))
