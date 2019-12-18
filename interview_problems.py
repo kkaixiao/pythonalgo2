@@ -1,8 +1,10 @@
 
 # solution function for question #1
 
+
 def question_1(str_input):
     return str_input[0] + str(len(str_input) - 2) + str_input[len(str_input)-1]
+
 
 # solution function for question #2
 
