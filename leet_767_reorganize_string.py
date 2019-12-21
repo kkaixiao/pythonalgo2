@@ -19,29 +19,30 @@ S will consist of lowercase letters and have length in range [1, 500].
 
 
 def reorganizeString(S):
+    arr = list(S)
+    arr.sort(reverse=True)
     char_dict = {}
-    for i in range(len(S)):
-        if char_dict.get(S[i]):
-            char_dict[S[i]] += 1
+    for i in range(len(arr)):
+        if char_dict.get(arr[i]):
+            char_dict[arr[i]] += 1
         else:
-            char_dict[S[i]] = 1
+            char_dict[arr[i]] = 1
 
     char_num_list = list(char_dict.values())
 
-    char_num_list.sort(reverse=True)
     pre_value = char_num_list[0]
     for i in range(1, len(char_num_list)):
-        if (pre_value - char_num_list[i]) > 1:
+        if (pre_value - (sum(char_num_list[i:]) + sum(char_num_list[:i-1]))) > 1:
             return ''
         pre_value = char_num_list[i]
 
-    import operator
-    sorted_char_dict = dict(sorted(char_dict.items(), reverse=True, key=operator.itemgetter(1)))
-
     res = ''
     count = 0
-    for k, v in sorted_char_dict.items():
+    for k, v in char_dict.items():
         count += v
+
+    import operator
+    sorted_char_dict = dict(sorted(char_dict.items(), reverse=True, key=operator.itemgetter(1)))
 
     while count > 0:
         for k, v in sorted_char_dict.items():
@@ -51,7 +52,7 @@ def reorganizeString(S):
             count -= 1
     return res
 
-str1 = 'abb'
-str2 = 'aaabbbcccdd'
+str1 = 'abbbbcc'
+str2 = 'aaabbbcccd'
 
-print('result is', reorganizeString(str2))
+print('result is', reorganizeString(str1))
