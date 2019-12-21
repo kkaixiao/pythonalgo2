@@ -29,12 +29,11 @@ def reorganizeString(S):
             char_dict[arr[i]] = 1
 
     char_num_list = list(char_dict.values())
+    print(char_num_list)
 
-    pre_value = char_num_list[0]
-    for i in range(1, len(char_num_list)):
-        if (pre_value - (sum(char_num_list[i:]) + sum(char_num_list[:i-1]))) > 1:
+    for i in range(0, len(char_num_list)):
+        if (char_num_list[i] - (sum(char_num_list[i+1:]) + sum(char_num_list[:i]))) > 1:
             return ''
-        pre_value = char_num_list[i]
 
     res = ''
     count = 0
@@ -52,7 +51,7 @@ def reorganizeString(S):
             count -= 1
     return res
 
-str1 = 'abbbbcc'
+str1 = 'aaab'
 str2 = 'aaabbbcccd'
 
 print('result is', reorganizeString(str1))
