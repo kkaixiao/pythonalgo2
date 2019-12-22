@@ -57,7 +57,6 @@ def search_insert3(nums, target):
             # start_ndx = mid + 1 if right_moves <= 1 else mid + right_moves - 1
             start_ndx = mid + 1
 
-
         # if target is smaller than or equal to the middle value
         # in order to accelerate searching speed, end_ndx now walks for the distance of int((end_ndx-mid)/2),
         # instead of the previous constant 1, however, we should consider the cases when int((end_ndx-mid)/2) == 0
@@ -69,7 +68,29 @@ def search_insert3(nums, target):
 
     return start_ndx + 1 if target > nums[start_ndx] else start_ndx
 
-nums1 = [1,3,5,6]
-target1 = 5
 
-print(search_insert3(nums1, target1))
+def search_insert4_recur_body(nums, target, start_ndx=0, end_ndx=1):
+    mid = int(start_ndx + (end_ndx - start_ndx) / 2)
+    if target == nums[mid]:
+        return mid
+    if start_ndx >= end_ndx:
+        return start_ndx + 1 if target > nums[start_ndx] else start_ndx
+    else:
+        mid = int(start_ndx + (end_ndx - start_ndx) / 2)
+        if target > nums[mid]:
+            start_ndx = mid + 1
+        else:
+            end_ndx = mid - 1
+        return search_insert4_recur_body(nums, target, start_ndx, end_ndx)
+
+
+def search_insert4(nums, target):
+    return search_insert4_recur_body(nums, target, 0, len(nums)-1)
+
+
+nums1 = [1,3,5,6]
+target1 = 15
+
+# print(search_insert3(nums1, target1))
+
+print(search_insert4(nums1, target1))
