@@ -44,7 +44,7 @@ def binary_search_recur_body(nums, target, start_idx=0, end_idx=1):
 def binary_search_recur(nums, target):
     return binary_search_recur_body(nums, target, 0, len(nums)-1)
 
-nums1 = [1,2, 3, 4, 5, 7]
+nums1 = [1,2, 3, 4, 5, 6]
 target1 = 5
 
 print(binary_search_recur(nums1, target1))
