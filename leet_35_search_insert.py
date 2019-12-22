@@ -31,7 +31,7 @@ If not found, i>=j then we need to compare target with the nums[i],
 return i + 1 if the target is bigger (insert after) or i otherwise (insert before).
 '''
 
-
+import math
 
 def search_insert3(nums, target):
     # we set start_ndx and end_ndx the starting and ending index of a string
@@ -53,8 +53,9 @@ def search_insert3(nums, target):
         # in this situation, endless iteration may happen
 
         if target > nums[mid]:
-            right_moves = int((mid-start_ndx)/2)
-            start_ndx = mid + 1 if right_moves == 0 else mid + right_moves
+            # right_moves = math.floor((mid-start_ndx)/2)
+            # start_ndx = mid + 1 if right_moves <= 1 else mid + right_moves - 1
+            start_ndx = mid + 1
 
 
         # if target is smaller than or equal to the middle value
@@ -62,9 +63,9 @@ def search_insert3(nums, target):
         # instead of the previous constant 1, however, we should consider the cases when int((end_ndx-mid)/2) == 0
         # in this situation, endless iteration may happen
         else:
-            left_moves = int((end_ndx-mid)/2)
-            end_ndx = mid - 1 if left_moves == 0 else mid - left_moves
-
+            # left_moves = math.floor((end_ndx-mid)/2)
+            # end_ndx = mid - 1 if left_moves <= 1 else mid - left_moves + 1
+            end_ndx = mid - 1
 
     return start_ndx + 1 if target > nums[start_ndx] else start_ndx
 
