@@ -18,6 +18,7 @@ def search_insert1(nums, target):
 def search_insert2(nums, target):
     return nums.index(target) if target in nums else search_insert2_sub(nums, target)
 
+
 def search_insert2_sub(nums, target):
     for i in range(len(nums)):
         if nums[i] > target:
@@ -25,7 +26,20 @@ def search_insert2_sub(nums, target):
     return i + 1
 
 
-nums1 = [1,3,5,6]
+def search_insert3(nums, target):
+    i, j = 0, len(nums)-1
+    while i < j:
+        mid = int(i + (j-i)/2)
+        if target == nums[mid]:
+            return mid
+        if target > nums[mid]:
+            i = mid + 1
+        else:
+            j = mid - 1
+
+    return i + 1 if target > nums[i] else i
+
+nums1 = [1,3,5,6,7]
 target1 = 6
 
-print(search_insert2(nums1, target1))
+print(search_insert3(nums1, target1))

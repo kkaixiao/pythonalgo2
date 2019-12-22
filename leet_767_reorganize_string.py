@@ -39,22 +39,28 @@ def reorganizeString(S):
     for k, v in char_dict.items():
         count += v
 
+    #
+    # import operator
+    # sorted_char_dict = dict(sorted(char_dict.items(), reverse=True, key=operator.itemgetter(1)))
 
-    import operator
-    sorted_char_dict = dict(sorted(char_dict.items(), reverse=True, key=operator.itemgetter(1)))
+    res_arr = [None]*count
+
+    count_ndx = 0
+    for k, v in char_dict.items():
+
+        for i in range(v):
+            pos = (count_ndx * 2) % count
+            res_arr[pos] = k
+            count_ndx += 1
 
 
 
-    while count >= 0:
-        for k, v in char_dict.items():
-            print(k, v)
-            if v > 0:
-                res += k
-                char_dict[k] -= 1
-            count -= 1
-    return res
+    return ''.join(res_arr)
 
-str1 = 'vvvlo'
-str2 = 'aaabbbcccd'
+str1 = 'bfrbs'
+str2 = 'aab'
+str3 = 'lllvo'
+str4 = 'aaabbbcccd'
+str5 = 'abbabbaaab'
 
-print('result is', reorganizeString(str1))
+print('result is', reorganizeString(str5))
