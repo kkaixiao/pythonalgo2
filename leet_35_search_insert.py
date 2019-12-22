@@ -83,7 +83,7 @@ def search_insert4_recur_body(nums, target, start_ndx=0, end_ndx=1):
             end_ndx = mid - 1
         return search_insert4_recur_body(nums, target, start_ndx, end_ndx)
 
-
+# just a line to call the recursion body function
 def search_insert4(nums, target):
     return search_insert4_recur_body(nums, target, 0, len(nums)-1)
 
