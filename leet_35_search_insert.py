@@ -53,7 +53,8 @@ def search_insert3(nums, target):
         # in this situation, endless iteration may happen
 
         if target > nums[mid]:
-            start_ndx = mid + int((mid-start_ndx)/2) + 1
+            right_moves = int((mid-start_ndx)/2)
+            start_ndx = mid + 1 if right_moves == 0 else mid + right_moves
 
 
         # if target is smaller than or equal to the middle value
@@ -61,12 +62,13 @@ def search_insert3(nums, target):
         # instead of the previous constant 1, however, we should consider the cases when int((end_ndx-mid)/2) == 0
         # in this situation, endless iteration may happen
         else:
-            end_ndx = mid - int((end_ndx-mid)/2) + 1
+            left_moves = int((end_ndx-mid)/2)
+            end_ndx = mid - 1 if left_moves == 0 else mid - left_moves
 
 
     return start_ndx + 1 if target > nums[start_ndx] else start_ndx
 
-nums1 = [1,3,5,6,7, 9, 11, 13, 15, 17, 18, 19, 21, 22, 23, 25, 26, 27, 29, 30, 31, 32, 33, 35, 37, 39, 40, 41, 42, 43]
-target1 = 8
+nums1 = [1,3,5,6]
+target1 = 5
 
 print(search_insert3(nums1, target1))
