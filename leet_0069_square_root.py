@@ -56,11 +56,11 @@ def square_root_3(x):
         pre_guess = guess
 
 
-
+# this is an fastest version with the use of Newton's method
 def square_root_4(x):
     if x == 0:
         return 0
-    pre_guess = 1
+    pre_guess = x/2
 
     while True:
         guess = pre_guess - (((pre_guess * pre_guess)-x)/(2*pre_guess))
@@ -71,4 +71,4 @@ def square_root_4(x):
 
 
 
-print(square_root_4(2147395599))
+print(square_root_3(2147395599))
