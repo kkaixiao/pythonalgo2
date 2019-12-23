@@ -20,5 +20,23 @@ def insert_right(root, new_branch):
     return root
 
 
-def getRootVal():
-    pass
+def get_root_val(root):
+    return root[0]
+
+
+def set_root_val(root, new_val):
+    root[0] = new_val
+
+
+def get_left_child(root):
+    return root[1]
+
+
+def get_right_child(root):
+    return root[2]
+
+r = BinaryTree(3)
+
+insert_left(r, 3)
+
+insert_right(r, 3)
