@@ -13,7 +13,7 @@ def square_root_1(x):
     return ret_val
 
 
-# this is a faster version
+# this is a bit faster version
 def square_root_2(x):
     if x == 0:
         return 0
@@ -63,12 +63,11 @@ def square_root_4(x):
     pre_guess = 1
 
     while True:
-        guess = pre_guess - (((pre_guess * pre_guess)-x)/(2*pre_guess))
+        guess = pre_guess - (((pre_guess**2)-x)/(2*pre_guess))
 
         if int(guess) == int(pre_guess):
             return int(guess)
         pre_guess = guess
 
 
-
-print(square_root_4(2147395599))
+print(square_root_4(3423423423435534532444334345345234))
