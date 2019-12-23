@@ -60,7 +60,7 @@ def square_root_3(x):
 def square_root_4(x):
     if x == 0:
         return 0
-    pre_guess = x/2
+    pre_guess = 1
 
     while True:
         guess = pre_guess - (((pre_guess * pre_guess)-x)/(2*pre_guess))
