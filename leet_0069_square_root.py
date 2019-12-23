@@ -45,7 +45,7 @@ def square_root_3(x):
         # this is because, for example, x=80, then guess is 40, you end up making the guess again to 2
         # however, if we use "guess = (guess + x/ guess) / 2", the result is: (40+2)/2 = 21, quite interesting!!!
 
-        guess = x / guess
+        guess = (guess + x / guess) / 2
 
         # we try to make it converge at this moment, the convergence criteria of this algorithm is guess == pre_guess
         # once it's converged, we return the value
