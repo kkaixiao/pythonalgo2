@@ -91,7 +91,7 @@ def leader4(arr):
     for item in arr:
         if len(stack) == 0:
             stack.append(item)
-        if item == stack[0]:
+        elif item == stack[0]:
             stack.append(item)
         else:
             stack.pop()
@@ -101,8 +101,10 @@ def leader4(arr):
         counter = arr.count(stack[0])
         if counter > len(arr)/2:
             return stack[0]
+        else:
+            return -1
 
 
 
-arr1 = [5, 7, 5, 3, 3, 3, 2, 3, 1, 3, 3, 3]
+arr1 = [5, 7, 5, 7]
 print(leader4(arr1))
