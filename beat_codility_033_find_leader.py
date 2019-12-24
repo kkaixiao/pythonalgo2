@@ -105,6 +105,29 @@ def leader4(arr):
             return -1
 
 
+# dominator (without the use of stack)
+def leader5(arr):
+    if len(arr) <= 2:
+        return -1
 
-arr1 = [5, 7, 5, 7]
-print(leader4(arr1))
+    consecutive_size = 0
+    candidate = 0
+
+    for item in arr:
+        if consecutive_size == 0:
+            candidate = item
+            consecutive_size = 1
+        elif candidate == item:
+            consecutive_size += 1
+        else:
+            consecutive_size -= 1
+    occurrence = arr.count(candidate)
+    if occurrence > len(arr)/2:
+        return candidate
+    else:
+        return -1
+
+
+
+arr1 = [5, 7, 5, 7, 5]
+print(leader5(arr1))
