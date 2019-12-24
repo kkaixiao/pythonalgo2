@@ -33,11 +33,35 @@ class BinaryTree(object):
         return self.key
 
 
+def pre_order(tree):
+    if tree:
+        print(tree.get_root_value())
+        pre_order(tree.get_left_child())
+        pre_order(tree.get_right_child())
+
+
+def post_order(tree):
+    if tree:
+        post_order(tree.get_left_child())
+        post_order(tree.get_right_child())
+        print(tree.get_root_value())
+
+
+def in_order(tree):
+    if tree:
+        in_order(tree.get_left_child())
+        print(tree.get_root_value())
+        in_order(tree.get_right_child())
+
+
 r = BinaryTree(3)
 r.insert_left(4)
 
-print(r.key)
-print(r.left.key)
-r.insert_right('5fff')
-a = r.get_right_child()
-print(a.get_root_value())
+r.insert_right(6)
+t = r.get_left_child()
+t.insert_left(7)
+t.insert_right(8)
+
+# pre_order(r)
+# post_order(r)
+in_order(r)
