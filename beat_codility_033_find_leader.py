@@ -14,8 +14,8 @@ Write a function
 
 def solution(A)
 
-that, given an array A consisting of N integers, returns index of any element of array A in which the dominator of A
-occurs. The function should return −1 if array A does not have a dominator.
+that, given an array A consisting of N integers, returns the element # not the index # of array A in which the dominator
+ of A occurs. The function should return −1 if array A does not have a dominator.
 
 For example, given array A such that
 
