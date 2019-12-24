@@ -1,4 +1,5 @@
 
+# simplest but worst solution
 def leader1(arr):
     if len(arr) <= 2:
         return -1
@@ -12,6 +13,7 @@ def leader1(arr):
             return item_set
     return -1
 
+# sorting solution
 def leader2(arr):
     if len(arr) <= 2:
         return -1
@@ -29,6 +31,8 @@ def leader2(arr):
 
     return mid_val if count > len(arr)/2 else -1
 
+
+# dictionary solution
 def leader3(arr):
     if len(arr) <= 2:
         return -1
@@ -46,7 +50,27 @@ def leader3(arr):
             leader_num = k
     return leader_num if leader > len(arr)/2 else -1
 
+# dominator (with the use of stack)
+def leader4(arr):
+    if len(arr) <= 2:
+        return -1
+
+    stack = []
+    for item in arr:
+        if len(stack) == 0:
+            stack.append(item)
+        if item == stack[0]:
+            stack.append(item)
+        else:
+            stack.pop()
+    if len(stack) == 0:
+        return -1
+    else:
+        counter = arr.count(stack[0])
+        if counter > len(arr)/2:
+            return stack[0]
 
 
-arr1 = [2, 3, 2, 3]
-print(leader3(arr1))
+
+arr1 = [5, 7, 5, 3, 3, 3, 2, 3, 1, 3, 3, 3]
+print(leader4(arr1))
