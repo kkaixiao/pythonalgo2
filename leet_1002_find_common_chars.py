@@ -48,7 +48,6 @@ def find_common_chars1(arr):
 
     return res
 
-    # return res
 
 def find_common_chars2(arr):
     pre_found = arr[0]
