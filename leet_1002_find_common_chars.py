@@ -55,11 +55,10 @@ def find_common_chars2(arr):
 
     for idx_str in range(1, len(arr)):
         new_found = ''
-        list_temp = list(arr[idx_str])
         for idx_char in range(len(pre_found)):
-            if pre_found[idx_char] in list_temp:
+            if pre_found[idx_char] in arr[idx_str]:
                 new_found += pre_found[idx_char]
-                list_temp.remove(pre_found[idx_char])
+                arr[idx_str] = arr[idx_str].replace(pre_found[idx_char], '', 1)
         pre_found = new_found
     return list(pre_found)
 
@@ -68,4 +67,4 @@ def find_common_chars2(arr):
 arr1 = ['bella', 'label', 'roller']
 arr2 = ['cool', 'lock', 'cook']
 
-print(find_common_chars2(arr1))
+print(find_common_chars2(arr2))
