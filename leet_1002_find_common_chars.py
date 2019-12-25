@@ -1,5 +1,5 @@
 
-def find_common_chars(arr):
+def find_common_chars1(arr):
 
     total_dict = {}
     for item in arr:
@@ -50,9 +50,22 @@ def find_common_chars(arr):
 
     # return res
 
+def find_common_chars2(arr):
+    pre_found = arr[0]
+
+    for idx_str in range(1, len(arr)):
+        new_found = ''
+        list_temp = list(arr[idx_str])
+        for idx_char in range(len(pre_found)):
+            if pre_found[idx_char] in list_temp:
+                new_found += pre_found[idx_char]
+                list_temp.remove(pre_found[idx_char])
+        pre_found = new_found
+    return list(pre_found)
+
 
 
 arr1 = ['bella', 'label', 'roller']
 arr2 = ['cool', 'lock', 'cook']
 
-print(find_common_chars(arr2))
+print(find_common_chars2(arr1))
