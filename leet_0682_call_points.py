@@ -22,7 +22,7 @@ Round 4: You could get 5 + 10 = 15 points. The sum is: 30.
 """
 
 
-def call_points(arr):
+def call_points1(arr):
     stack_points = []
     for item in arr:
         if item not in ['+', 'C', 'D']:
@@ -38,8 +38,26 @@ def call_points(arr):
                 stack_points.append(stack_points[-1])
             elif len(stack_points) > 1:
                 stack_points.append(stack_points[-1] + stack_points[-2])
+    return sum(stack_points)
+
+
+def call_points2(arr):
+    stack_points = []
+    dict_chars = {'+': (lambda x, y=0: x+y), 'D': (lambda x, y=0: 2*x)}
+    for item in arr:
+        if item not in ['+', 'C', 'D']:
+            stack_points.append(int(item))
+        elif item == 'C':
+            if len(stack_points) > 0:
+                stack_points.pop()
+        else:
+            if len(stack_points) > 0:
+                if len(stack_points) == 1:
+                    stack_points.append(dict_chars[item](stack_points[-1]))
+                else:
+                    stack_points.append(dict_chars[item](stack_points[-1], stack_points[-2]))
 
     return sum(stack_points)
-arr1 = ["5","2","C","D","+"]
 
-print(call_points(arr1))
+arr2 = ["5","2","C","D","+"]
+print(call_points2(arr2))
