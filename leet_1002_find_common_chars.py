@@ -62,8 +62,30 @@ def find_common_chars2(arr):
     return list(pre_found)
 
 
+# awesome
+def find_common_chars3(arr):
+    if not arr:
+        return []
+
+    res = []
+    for each in set(arr[0]):
+        count = [w.count(each) for w in arr]
+        s = each * min(count)
+        # print("s", s)
+        for i in s:
+            res.append(i)
+
+    return res
+
+
+# super awesome
+from functools import reduce
+import collections
+def find_common_chars4(arr):
+    return list(reduce(collections.Counter.__and__, map(collections.Counter, arr)).elements())
+
 
 arr1 = ['bella', 'label', 'roller']
 arr2 = ['cool', 'lock', 'cook']
 
-print(find_common_chars2(arr2))
+print(find_common_chars3(arr2))
