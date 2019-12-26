@@ -56,6 +56,21 @@ def call_points2(arr):
                     stack_points.append(dict_chars[item](stack_points[-1]))
                 else:
                     stack_points.append(dict_chars[item](stack_points[-1], stack_points[-2]))
+    return sum(stack_points)
+
+def call_points3(arr):
+    stack_points = []
+    dict_chars = {'+': (lambda x: sum(x[-2:])), 'D': (lambda x: 2*x[-1])}
+    for item in arr:
+        if item not in ['+', 'C', 'D']:
+            stack_points.append(int(item))
+        elif item == 'C':
+            if len(stack_points) > 0:
+                stack_points.pop()
+        else:
+            if len(stack_points) > 0:
+                stack_points.append(dict_chars[item](stack_points.copy()))
+
 
     return sum(stack_points)
 
