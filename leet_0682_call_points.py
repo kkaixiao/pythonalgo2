@@ -75,4 +75,4 @@ def call_points3(arr):
     return sum(stack_points)
 
 arr2 = ["5","2","C","D","+"]
-print(call_points2(arr2))
+print(call_points3(arr2))
