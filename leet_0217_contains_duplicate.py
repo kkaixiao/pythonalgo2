@@ -4,13 +4,14 @@ def contains_duplicate(nums):
         return False
     stack = []
     nums.sort()
-    stack.append(nums[0])
-    for item in nums[1:]:
-        if item == stack[0]:
+
+    for i in range(len(nums) - 1):
+        stack.append(nums[i])
+        if nums[i+1] == stack[0]:
             return True
         else:
             stack.pop()
-            stack.append(item)
+
     return False
 
 
@@ -71,4 +72,4 @@ def contains_duplicate6(nums):
 arr1 = [1,2,3,4]
 arr2 = [1,2,3,1]
 
-print(contains_duplicate6(arr2))
+print(contains_duplicate(arr2))
