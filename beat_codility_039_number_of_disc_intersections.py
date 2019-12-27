@@ -11,7 +11,7 @@ class DiscLog():
         self.start_end = start_end
 
 
-def disc_intersections(arr):
+def disc_intersections_1(arr):
     disc_history = []
     for i in range(len(arr)):
         disc_history.append(DiscLog(i-arr[i], 1))
@@ -30,7 +30,28 @@ def disc_intersections(arr):
     return intersections
 
 
+class Disc():
+    def __init__(self, start_x, end_x):
+        self.start_x = start_x
+        self.end_x = end_x
+
+
+def disc_intersections_2(arr):
+    disc_list = []
+    for i in range(len(arr)):
+        disc_list.append(Disc(i-arr[i], i+arr[i]))
+
+    disc_list.sort(key=lambda d: (d.start_x, d.end_x))
+    count = 0
+    for i in range(len(disc_list)):
+        # print(disc_list[i].start_x, disc_list[i].end_x)
+        for item in disc_list[i+1:]:
+            if disc_list[i].end_x > item.start_x:
+                count += 1
+    return count
+
+
 discs1 = [1, 5, 2, 1, 4, 0]
-print(disc_intersections(discs1))
+print(disc_intersections_2(discs1))
 
 
