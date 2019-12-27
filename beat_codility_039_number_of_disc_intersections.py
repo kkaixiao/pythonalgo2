@@ -48,6 +48,8 @@ def disc_intersections_2(arr):
         for item in disc_list[i+1:]:
             if disc_list[i].end_x > item.start_x:
                 count += 1
+            if count > 1000000:
+                return -1
     return count
 
 
