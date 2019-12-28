@@ -30,6 +30,8 @@ def intersect2(nums1, nums2):
     return res
 
 
+
+
 # use two pointers
 def intersect3(nums1, nums2):
     nums1.sort()
@@ -48,10 +50,36 @@ def intersect3(nums1, nums2):
     return res
 
 
+'''#4: normal method. 84ms'''
+# by Ricky Hu
+def intersect4(nums1, nums2):
+    res = []
+    for i in range(len(nums1)):
+        if nums1[i] in nums2:
+            res.append(nums1[i])
+            nums2.remove(nums1[i])
+
+    return res
+
+
+# use one dictionary and one list
+def intersect5(nums1, nums2):
+    count_dict_1 = {}
+    list_2 = []
+    for item in nums1:
+        count_dict_1[item] = count_dict_1.get(item, 0) + 1
+    for item in nums2:
+        if count_dict_1.get(item):
+            list_2.append(item)
+            count_dict_1[item] -= 1
+
+    return list_2
+    # return res
+
 # arr1, arr2 = [1,2,2,1], [2,2]
 arr1, arr2 = [4,9,5], [9,4,9,8,4]
 # arr1, arr2 = [3,1,2], [1,1]
 
 
-print(intersect3(arr1, arr2))
+print(intersect4(arr1, arr2))
 
