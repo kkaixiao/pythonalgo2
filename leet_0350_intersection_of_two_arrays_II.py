@@ -48,10 +48,10 @@ def intersect3(nums1, nums2):
     return res
 
 
-# nums1, nums2 = [1,2,2,1], [2,2]
-# nums1, nums2 = [4,9,5], [9,4,9,8,4]
-nums1, nums2 = [3,1,2], [1,1]
+# arr1, arr2 = [1,2,2,1], [2,2]
+arr1, arr2 = [4,9,5], [9,4,9,8,4]
+# arr1, arr2 = [3,1,2], [1,1]
 
 
-print(intersect3(nums1, nums2))
+print(intersect3(arr1, arr2))
 
