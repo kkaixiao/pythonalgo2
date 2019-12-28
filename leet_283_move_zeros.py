@@ -2,6 +2,7 @@
 # the first method using linear array assignment
 # the complexity should be O(N)
 
+
 def move_zeros(nums):
 
     non_zero_count = 0
