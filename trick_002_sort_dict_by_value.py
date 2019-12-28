@@ -7,6 +7,7 @@ output = sorted(xs.items(), key=lambda x: x[1])
 print(output)
 #[('d', 1), ('c', 2), ('b', 3), ('a', 4)]
 
+
 # Or:
 
 import operator
