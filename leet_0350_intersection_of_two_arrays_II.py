@@ -30,10 +30,28 @@ def intersect2(nums1, nums2):
     return res
 
 
+# use two pointers
+def intersect3(nums1, nums2):
+    nums1.sort()
+    nums2.sort()
+    pointer1 = pointer2 = 0
+    res = []
+    while (pointer1 < len(nums1)) and (pointer2 < len(nums2)):
+        if nums1[pointer1] > nums2[pointer2]:
+            pointer2 += 1
+        elif nums1[pointer1] < nums2[pointer2]:
+            pointer1 += 1
+        else:
+            res.append(nums1[pointer1])
+            pointer1 += 1
+            pointer2 += 1
+    return res
+
+
 # nums1, nums2 = [1,2,2,1], [2,2]
-nums1, nums2 = [4,9,5], [9,4,9,8,4]
-# nums1, nums2 = [3,1,2], [1,1]
+# nums1, nums2 = [4,9,5], [9,4,9,8,4]
+nums1, nums2 = [3,1,2], [1,1]
 
 
-print(intersect2(nums1, nums2))
+print(intersect3(nums1, nums2))
 
