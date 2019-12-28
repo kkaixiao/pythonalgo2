@@ -2,7 +2,6 @@
 # the first method using linear array assignment
 # the complexity should be O(N)
 
-
 def move_zeros(nums):
 
     non_zero_count = 0
@@ -10,10 +9,12 @@ def move_zeros(nums):
         if item != 0:
             nums[non_zero_count] = item
             non_zero_count += 1
-    for i in range(non_zero_count, len(nums)):
-        nums[i] = 0
 
+    # for i in range(non_zero_count, len(nums)):
+    #     nums[i] = 0
 
+    # the above commented for loop can be replaced with slice assignment to accelerate
+    nums[non_zero_count:] = [0] * (len(nums) - non_zero_count)
 
 
 arr1 = [0, 1, 0, 3, 12]
