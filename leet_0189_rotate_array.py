@@ -29,9 +29,24 @@ def rotate_array2(nums, k):
         nums[(i+k) % (len(nums))] = temp_nums[i]
 
 
+def rotate_array3(nums, k):
+    for key, value in enumerate(nums.copy()):
+        nums[(key + k) % len(nums)] = value
+
+# this function fail if len(nums) < k
+def rotate_array4(nums, k):
+    stack = []
+    for _ in range(k):
+        stack.append(nums.pop())
+    stack = stack[::-1]
+    nums = stack + nums
+
 
 
 nums1 = [1,2,3,4,5,6,7]
 k = 3
 
-print(rotate_array(nums1, k))
+# nums1 = [-1,-100,3,99]
+# k = 2
+
+print(rotate_array4(nums1, k))
