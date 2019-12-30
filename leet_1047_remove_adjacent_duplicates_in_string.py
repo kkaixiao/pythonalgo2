@@ -3,8 +3,8 @@ def remove_adjacent_duplicates(chars):
         return chars
     else:
         list_chars = list(chars)
-        for i in range(len(list_chars)-1):
-            if list_chars[i] == list_chars[i+1]:
+        for i in range(len(list_chars) - 1):
+            if list_chars[i] == list_chars[i + 1]:
                 for _ in range(2):
                     list_chars.pop(i)
                 return remove_adjacent_duplicates(''.join(list_chars))
@@ -15,21 +15,19 @@ def remove_adjacent_duplicates2(chars):
     if len(chars) <= 1:
         return chars
     else:
-        for i in range(len(chars)-1):
-            if chars[i] == chars[i+1]:
+        for i in range(len(chars) - 1):
+            if chars[i] == chars[i + 1]:
                 chars = chars[:i] + chars[i:].replace(chars[i], '', 2)
                 return remove_adjacent_duplicates(chars)
         return chars
 
 
 def remove_adjacent_duplicates3(chars):
-
     if len(chars) <= 1:
         return chars
 
     count = 0
     stack = []
-
 
     while count < len(chars):
         if len(stack) == 0:
@@ -42,7 +40,6 @@ def remove_adjacent_duplicates3(chars):
         count += 1
 
     return ''.join(stack)
-
 
 
 def remove_adjacent_duplicates4(chars):
@@ -61,8 +58,25 @@ def remove_adjacent_duplicates4(chars):
 
     return temp_s
 
-str1= 'abbaca'
-print(remove_adjacent_duplicates4(str1))
+
+def remove_adjacent_duplicates5(chars, duplicated=True):
+    if not duplicated:
+        return chars
+    list_double_words = []
+    for i in range(97, 97 + 26):
+        list_double_words.append(chr(i) + chr(i))
+
+
+    has_duplicated = False
+    for item in list_double_words:
+        if item in chars:
+            has_duplicated = True
+            chars = chars.replace(item, '', int(len(chars)))
+    return remove_adjacent_duplicates5(chars, has_duplicated)
+
+
+str1 = 'abbaca'
+print(remove_adjacent_duplicates5(str1))
 
 # a = []
 # print(a[-1])
