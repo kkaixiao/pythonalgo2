@@ -66,7 +66,6 @@ def remove_adjacent_duplicates5(chars, duplicated=True):
     for i in range(97, 97 + 26):
         list_double_words.append(chr(i) + chr(i))
 
-
     has_duplicated = False
     for item in list_double_words:
         if item in chars:
