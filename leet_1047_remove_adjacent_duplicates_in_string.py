@@ -63,20 +63,43 @@ def remove_adjacent_duplicates5(chars, duplicated=True):
     if not duplicated:
         return chars
 
+
     has_duplicated = False
     for item in list_double_words:
         if item in chars:
             has_duplicated = True
-            chars = chars.replace(item, '', int(len(chars)))
+            chars = chars.replace(item, '')
     return remove_adjacent_duplicates5(chars, has_duplicated)
+
+
+
+def remove_adjacent_duplicates6(chars):
+    if len(chars) <= 1:
+        return chars
+    list_double_words = []
+    for i in range(97, 97 + 26):
+        list_double_words.append(chr(i) + chr(i))
+    duplicated = 1
+    while duplicated > 0:
+        duplicated = 1
+        for item in list_double_words:
+            if item in chars:
+                chars = chars.replace(item, '')
+                duplicated += 1
+        duplicated -= 1
+
+    return chars
+
+
 
 
 list_double_words = []
 for i in range(97, 97 + 26):
     list_double_words.append(chr(i) + chr(i))
 
+
 str1 = 'abbaca'
-print(remove_adjacent_duplicates5(str1))
+print(remove_adjacent_duplicates6(str1))
 
 # a = []
 # print(a[-1])
