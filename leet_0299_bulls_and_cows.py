@@ -88,12 +88,11 @@ def bulls_cows2(secret, guess):
 
 # this is a dictionary version
 def bulls_cows3(secret, guess):
-    secret_dict = {}
-    guess_dict = {}
+    non_bull_secret_dict = {}
+    non_bull_guess_dict = {}
     for s in secret + guess:
-        secret_dict[s] = 0
-        guess_dict[s] = 0
-    # print(secret_dict, guess_dict)
+        non_bull_secret_dict[s] = 0
+        non_bull_guess_dict[s] = 0
 
     num_bulls = 0
     num_cows = 0
@@ -101,11 +100,14 @@ def bulls_cows3(secret, guess):
         if secret[i] == guess[i]:
             num_bulls += 1
         else:
-            secret_dict[secret[i]] += 1
-            guess_dict[guess[i]] += 1
+            # we count all numbers of non-bull characters
+            non_bull_secret_dict[secret[i]] += 1
+            non_bull_guess_dict[guess[i]] += 1
 
-    for item in guess_dict:
-        num_cows += min(guess_dict[item], secret_dict[item])
+    # for each key in non-bull guess dictionary, if it can be found in non-bull secret dictionary
+    # it can be a cow, however we should remove the duplicates
+    for item in non_bull_guess_dict:
+        num_cows += min(non_bull_guess_dict[item], non_bull_secret_dict[item])
 
     return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
@@ -127,6 +129,7 @@ def bulls_cows4(secret, guess):
             non_bull_secret += secret[i]
             non_bull_guess += guess[i]
 
+    # for all letters in non-bull guesses, we can use set to avoid duplication
     for char in set(list(non_bull_guess)):
 
         if non_bull_secret.find(char) > -1:
@@ -143,15 +146,15 @@ def bulls_cows4(secret, guess):
 # guess1 =  "0111"
 
 # expect "0A4B"
-# secret1 = "1122"
-# guess1 =  "2211"
+secret1 = "1122"
+guess1 =  "2211"
 
 # expect "0A1B"
 # secret1 = "1122"
 # guess1 =  "0001"
 
 # expect "3A0B"
-secret1 = "1122"
-guess1 =  "1222"
+# secret1 = "1122"
+# guess1 =  "1222"
 
 print(bulls_cows4(secret1, guess1))
