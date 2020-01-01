@@ -110,7 +110,7 @@ def bulls_cows3(secret, guess):
     return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
 
-# this is a string version along with min() operation
+# this is a string version along with min() operation，super fast
 def bulls_cows4(secret, guess):
 
 
