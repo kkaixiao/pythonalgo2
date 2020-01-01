@@ -109,13 +109,38 @@ def bulls_cows3(secret, guess):
 
     return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
+
+# this is a string version along with min() operation
+def bulls_cows4(secret, guess):
+
+
+    num_bulls = 0
+    num_cows = 0
+
+    non_bull_secret = ''
+    non_bull_guess = ''
+
+    for i in range(len(secret)):
+        if secret[i] == guess[i]:
+            num_bulls += 1
+        else:
+            non_bull_secret += secret[i]
+            non_bull_guess += guess[i]
+
+    for char in set(list(non_bull_guess)):
+
+        if non_bull_secret.find(char) > -1:
+            num_cows += min(non_bull_secret.count(char), non_bull_guess.count(char))
+
+    return str(num_bulls) + 'A' + str(num_cows) + 'B'
+
 # expect "1A3B"
 # secret1 = "1807"
 # guess1 =  "7810"
 
 # expect "1A1B"
-secret1 = "1123"
-guess1 =  "0111"
+# secret1 = "1123"
+# guess1 =  "0111"
 
 # expect "0A4B"
 # secret1 = "1122"
@@ -126,7 +151,7 @@ guess1 =  "0111"
 # guess1 =  "0001"
 
 # expect "3A0B"
-# secret1 = "1122"
-# guess1 =  "1222"
+secret1 = "1122"
+guess1 =  "1222"
 
-print(bulls_cows3(secret1, guess1))
+print(bulls_cows4(secret1, guess1))
