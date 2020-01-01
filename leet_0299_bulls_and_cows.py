@@ -30,7 +30,7 @@ Note: You may assume that the secret number and your friend's guess only contain
 
 '''
 
-
+# this is an array version, a little messy and inefficient, but works anyway
 def bulls_cows(secret, guess):
 
     num_bulls = 0
@@ -58,8 +58,10 @@ def bulls_cows(secret, guess):
 
     return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
-
+# this is a string operation version, accelerated
 def bulls_cows2(secret, guess):
+    if secret == '':
+        return '0A0B'
 
     num_bulls = 0
     num_cows = 0
@@ -74,8 +76,8 @@ def bulls_cows2(secret, guess):
             non_bull_secret += secret[i]
             non_bull_guess += guess[i]
 
-    for i in range(len(non_bull_guess)):
-        found_idx = non_bull_secret.find(non_bull_guess[i])
+    for char in non_bull_guess:
+        found_idx = non_bull_secret.find(char)
 
         if found_idx > -1:
             non_bull_secret = non_bull_secret.replace(non_bull_secret[found_idx], '', 1)
@@ -84,20 +86,36 @@ def bulls_cows2(secret, guess):
     return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
 
-
+# this is a dictionary version
 def bulls_cows3(secret, guess):
+    secret_dict = {}
+    guess_dict = {}
+    for s in secret + guess:
+        secret_dict[s] = 0
+        guess_dict[s] = 0
+    # print(secret_dict, guess_dict)
 
+    num_bulls = 0
+    num_cows = 0
+    for i in range(len(guess)):
+        if secret[i] == guess[i]:
+            num_bulls += 1
+        else:
+            secret_dict[secret[i]] += 1
+            guess_dict[guess[i]] += 1
 
-    return True
+    for item in guess_dict:
+        num_cows += min(guess_dict[item], secret_dict[item])
 
+    return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
 # expect "1A3B"
 # secret1 = "1807"
 # guess1 =  "7810"
 
 # expect "1A1B"
-# secret1 = "1123"
-# guess1 =  "0111"
+secret1 = "1123"
+guess1 =  "0111"
 
 # expect "0A4B"
 # secret1 = "1122"
@@ -108,7 +126,7 @@ def bulls_cows3(secret, guess):
 # guess1 =  "0001"
 
 # expect "3A0B"
-secret1 = "1122"
-guess1 =  "1222"
+# secret1 = "1122"
+# guess1 =  "1222"
 
-print(bulls_cows2(secret1, guess1))
+print(bulls_cows3(secret1, guess1))
