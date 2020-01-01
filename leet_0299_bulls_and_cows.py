@@ -58,6 +58,39 @@ def bulls_cows(secret, guess):
 
     return str(num_bulls) + 'A' + str(num_cows) + 'B'
 
+
+def bulls_cows2(secret, guess):
+
+    num_bulls = 0
+    num_cows = 0
+
+    non_bull_secret = ''
+    non_bull_guess = ''
+
+    for i in range(len(secret)):
+        if secret[i] == guess[i]:
+            num_bulls += 1
+        else:
+            non_bull_secret += secret[i]
+            non_bull_guess += guess[i]
+
+    for i in range(len(non_bull_guess)):
+        found_idx = non_bull_secret.find(non_bull_guess[i])
+
+        if found_idx > -1:
+            non_bull_secret = non_bull_secret.replace(non_bull_secret[found_idx], '', 1)
+            num_cows += 1
+
+    return str(num_bulls) + 'A' + str(num_cows) + 'B'
+
+
+
+def bulls_cows3(secret, guess):
+
+
+    return True
+
+
 # expect "1A3B"
 # secret1 = "1807"
 # guess1 =  "7810"
@@ -78,4 +111,4 @@ def bulls_cows(secret, guess):
 secret1 = "1122"
 guess1 =  "1222"
 
-print(bulls_cows(secret1, guess1))
+print(bulls_cows2(secret1, guess1))
