@@ -26,9 +26,21 @@ def length_of_last_word(chars):
     return len(chars[last_word_start+1:last_word_end+1])
 
 
+def length_of_last_word2(chars):
+    last_word_end, last_word_start = -1, -1
+    idx = len(chars) - 1
+    while (last_word_start == -1 or last_word_end == -1) and idx > -1:
+        if last_word_end == -1 and chars[idx] != ' ':
+            last_word_end = idx
+        elif last_word_start == -1 and chars[idx] == ' ' and last_word_end != -1:
+            last_word_start = idx
+        idx -= 1
+
+    return len(chars[last_word_start+1:last_word_end+1])
+
 # str1 = "Hello World "
-# str1 = 'ba '
-str1 = ' b  '
+str1 = 'ba '
+# str1 = ' b  '
 # str1 = ' '
 # str1 = ''
-print(length_of_last_word(str1))
+print(length_of_last_word2(str1))
