@@ -47,10 +47,12 @@ def even_num_and_even_digits2(nums):
 def even_num_and_even_digits3(nums):
     return sum(1 for i in nums if not (len(str(i)) % 2))
 
-# this is a one line version without 'if' statement
+
+# this is a one line version without 'if' statement, adjusted to remove '[]' symbols
+# in the enumerator
 def even_num_and_even_digits4(nums):
 
-    return sum([not(len(str(i)) % 2) for i in nums])
+    return sum(not(len(str(i)) % 2) for i in nums)
 
 
 
