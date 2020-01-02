@@ -1,5 +1,4 @@
-
-'''
+"""
 On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
 
 Once you pay the cost, you can either climb one or two steps. You need to find minimum cost
@@ -21,6 +20,23 @@ Note:
 cost will have a length in the range [2, 1000].
 Every cost[i] will be an integer in the range [0, 999].
 
-'''
+"""
+
+
 def min_cost_climbing_stairs(cost):
-    pass
+    for i in range(2, len(cost)):
+        cost[i] += min(cost[i-1], cost[i-2])
+    return min(cost[-1], cost[-2])
+
+
+def min_cost_climbing_stairs2(cost):
+    dict_cost = dict(enumerate(cost))
+    for i in range(2, len(cost)):
+        dict_cost[i] += min(dict_cost[i-1], dict_cost[i-2])
+    return min(dict_cost[len(cost)-1], dict_cost[len(cost)-2])
+
+
+
+cost1 = [10, 15, 20]
+# cost1 = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+print(min_cost_climbing_stairs2(cost1))
