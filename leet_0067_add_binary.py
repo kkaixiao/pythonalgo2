@@ -43,6 +43,32 @@ def add_binary(chars1, chars2):
     return ''.join(res_str)
 
 
+def add_binary2(chars1, chars2):
+    if len(chars1) < len(chars2):
+        chars1, chars2 = chars2, chars1
+    is_carry = 0
+    res = []
+    for idx2 in range(len(chars2)-1, -1, -1):
+        idx1 = idx2 + len(chars1) - len(chars2)
+        sum_bits_and_is_carry = int(chars1[idx1]) + int(chars2[idx2]) + is_carry
+        res.append(sum_bits_and_is_carry % 2)
+        is_carry = sum_bits_and_is_carry // 2
+
+    for i in range(len(chars1) - len(chars2)-1, -1, -1):
+
+        sum_bits_and_is_carry = int(chars1[i]) + is_carry
+        res.append(sum_bits_and_is_carry % 2)
+        is_carry = sum_bits_and_is_carry // 2
+
+    if is_carry == 1:
+        res.append(is_carry)
+
+    res_str = []
+    while res:
+        res_str.append(str(res.pop()))
+
+    return ''.join(res_str)
 
 
-print(add_binary('11', '1'))
+
+print(add_binary2('11', '1'))
