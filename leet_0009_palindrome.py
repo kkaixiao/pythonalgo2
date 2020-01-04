@@ -103,10 +103,12 @@ import math
 
 
 def palindrome_num_direct2(num):
+
     if 0 <= num <= 9:
         return True
-    if num < 0 or not(num % 10):
+    if num < 0 or num % 10 == 0:
         return False
+
     digit_num = int(math.log10(num)) + 1
 
     for i in range(digit_num//2):
@@ -116,5 +118,23 @@ def palindrome_num_direct2(num):
     return True
 
 
-print(palindrome_num_direct2(10301))
+def palindrome_num_direct3(num, digit):
+
+    if 0 <= num <= 9:
+        return True
+    if num < 0 or num % 10 == 0:
+        return False
+
+    digit_num = int(math.log10(num)) + 1
+
+    # to add recursion version
+
+    # for i in range(digit_num//2):
+    #     if num//(10**(digit_num-i-1)) % 10 != num//(10**i) % 10:
+    #         return False
+
+
+    return True
+
+print(palindrome_num_direct3(10701))
 
