@@ -80,5 +80,40 @@ def palindrome_num_array(num):
     return True
 
 
-print(palindrome_num_array(334))
+def palindrome_num_dict(num):
+    if 0 <= num <= 9:
+        return True
+    if num < 0 or not(num % 10):
+        return False
+    digits = {}
+    count = 0
+    while num > 0:
+        digits[count] = num % 10
+        num = num // 10
+        count += 1
+
+    for i in range(count//2):
+        if digits[i] != digits[count-i-1]:
+            return False
+
+    return True
+
+
+import math
+
+
+def palindrome_num_direct2(num):
+    if 0 <= num <= 9:
+        return True
+    if num < 0 or not(num % 10):
+        return False
+    digit_num = int(math.log10(num)) + 1
+
+    for i in range(digit_num//2):
+        if num//(10**(digit_num-i-1)) % 10 != num//(10**i) % 10:
+            return False
+
+    return True
+
+print(palindrome_num_direct2(12321))
 
