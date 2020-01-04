@@ -1,9 +1,39 @@
 
+"""
+Write a function:
+
+class Solution { public int solution(int A, int B, int K); }
+
+that, given three integers A, B and K, returns the number of integers within the range [A..B] that are divisible by K,
+i.e.:
+
+{ i : A ≤ i ≤ B, i mod K = 0 }
+
+For example, for A = 6, B = 11 and K = 2, your function should return 3, because there are three numbers divisible by
+2 within the range [6..11], namely 6, 8 and 10.
+
+Write an efficient algorithm for the following assumptions:
+
+A and B are integers within the range [0..2,000,000,000];
+K is an integer within the range [1..2,000,000,000];
+A ≤ B.
+"""
+
+import math
+
+
 def div_count(a, b, k):
     last_div_num = b//k*k
-    first_div_num = (a//k+1)*k
+    first_div_num = ((a+k-1)//k)*k
+    print(last_div_num, first_div_num)
     return int((last_div_num-first_div_num)/k+1)
 
 
+def div_count2(a, b, k):
+    last_div_num = math.floor(b/k)*k
+    first_div_num = math.ceil(a/k)*k
+    print(last_div_num, first_div_num)
+    return int((last_div_num-first_div_num)/k+1)
 
-print(div_count(88, 100, 3))
+
+print(div_count2(6, 11, 2))
