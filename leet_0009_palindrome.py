@@ -115,5 +115,6 @@ def palindrome_num_direct2(num):
 
     return True
 
-print(palindrome_num_direct2(12321))
+
+print(palindrome_num_direct2(10301))
 
