@@ -98,7 +98,7 @@ def flags1(heights):
 def can_place_flags(peaks, flags_to_palce):
     current_position = 1 - flags_to_palce
     for i in range(flags_to_palce):
-        if current_position + flags_to_palce > len(peaks) -1:
+        if current_position + flags_to_palce > len(peaks) - 1:
             return False
         current_position = peaks[current_position + flags_to_palce]
     return current_position < len(peaks)
