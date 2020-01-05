@@ -38,6 +38,7 @@ def ugly_number(num):
 
     return True
 
+
 def ugly_dividable(num):
     ugly_primes = [2, 3, 5]
     for item in ugly_primes:
