@@ -47,14 +47,14 @@ def reverse_integer2(num):
 
     if num > (2 ** 31 - 1) or num < -(2 ** 31):
         return 0
-    if 10 > num > 0 or -10 < num < 0:
+    if 10 > num >= 0 or -10 < num < 0:
         return num
 
     abs_num = abs(num)
 
-    # num_len = len(str(abs_num))  #this is a traditional way to find a length of a number
+    num_len = len(str(abs_num))  #this is a traditional way to find a length of a number
 
-    num_len = floor(log10(abs_num) + 1)  # this is by using math.log10() function
+    # num_len = floor(log10(abs_num) + 1)  # this is by using math.log10() function
     res = 0
     count = 1
     while abs_num > 0:
