@@ -69,6 +69,7 @@ def add_binary2(chars1, chars2):
 
     return ''.join(res_str)
 
+
 # make addition at first, then directly convert
 def add_binary3(chars1, chars2):
     addition_val = int(chars1) + int(chars2)
