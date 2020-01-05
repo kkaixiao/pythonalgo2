@@ -69,6 +69,27 @@ def add_binary2(chars1, chars2):
 
     return ''.join(res_str)
 
+# make addition at first, then directly convert
+def add_binary3(chars1, chars2):
+    addition_val = int(chars1) + int(chars2)
+    if addition_val <= 1:
+        return str(addition_val)
 
+    is_carry = 0
+    res = []
+    while addition_val > 0:
+        one_digit = addition_val % 10
+        addition_val //= 10
+        res.append((one_digit + is_carry) % 2)
+        is_carry = (one_digit + is_carry) // 2
 
-print(add_binary2('11', '1'))
+    if is_carry == 1:
+        res.append(is_carry)
+
+    res_str = []
+    while res:
+        res_str.append(str(res.pop()))
+
+    return ''.join(res_str)
+
+print(add_binary3('1010', '1011'))
