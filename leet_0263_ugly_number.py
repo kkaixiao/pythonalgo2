@@ -67,6 +67,7 @@ def ugly_number_rec(num):
         else:
             return ugly_number_rec(test_num)
 
+
 # the following functions are made of double (enclosed) recursion functions
 def ugly_dividable_rec2(num):
     if num == 1 or num == 0:
