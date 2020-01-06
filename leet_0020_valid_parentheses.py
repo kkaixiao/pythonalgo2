@@ -1,4 +1,4 @@
-def balance_check(s):
+def is_valid(s):
 
     if len(s)%2 != 0:
         return False
@@ -19,9 +19,9 @@ def balance_check(s):
                 return False
     return len(stack) == 0
 
-print(balance_check('{}'))
-print(balance_check('{()}'))
-print(balance_check('{(})'))
+print(is_valid('{}'))
+print(is_valid('{()}'))
+print(is_valid('{(})'))
 
 
 
