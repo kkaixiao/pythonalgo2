@@ -71,6 +71,7 @@ def ugly_number_rec(num):
 
 # print(ugly_dividable(11))
 
+
 # print(ugly_number(6))
 
 print(ugly_number_rec(22))
