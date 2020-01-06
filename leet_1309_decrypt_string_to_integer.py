@@ -88,5 +88,5 @@ def freq_alphabets_regex(chars):
 str1 = '12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#3'
 # str1 = "10#11#12#"
 
-print(freq_alphabets(str1))
-# print(freq_alphabets_regex(str1))
+# print(freq_alphabets(str1))
+print(freq_alphabets_regex(str1))
