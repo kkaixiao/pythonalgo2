@@ -60,8 +60,33 @@ def freq_alphabets(chars):
     return res
 
 
+# I could not use regular expression correctly, the split function will ignore the last
+# portion if there's a number behind
+# that is, I can not get the correct answer for:
+# str1 =      '12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#'
+# but not for '12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#3'
 
-str1 = '123456789310#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#123'
+import re
+def freq_alphabets_regex(chars):
+    pattern = re.compile("[1-2][0-9]#")
+    seps = pattern.split(chars)
+    matched = pattern.findall(chars)
+    res = ''
+    matched_idx = 0
+
+    for sep in seps:
+        if len(sep) > 0:
+            for char in sep:
+                res += chr(int(char) + 96)
+        else:
+            res += chr(int(matched[matched_idx][0:2]) + 96)
+            matched_idx += 1
+
+    return res
+
+
+str1 = '12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#3'
 # str1 = "10#11#12#"
 
 print(freq_alphabets(str1))
+# print(freq_alphabets_regex(str1))
