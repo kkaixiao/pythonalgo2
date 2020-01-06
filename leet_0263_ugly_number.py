@@ -67,6 +67,35 @@ def ugly_number_rec(num):
         else:
             return ugly_number_rec(test_num)
 
+# the following functions are made of double (enclosed) recursion functions
+def ugly_dividable_rec2(num):
+    if num == 1 or num == 0:
+        return num
+    ugly_primes = [2, 3, 5]
+
+    idx = 0
+    while idx < len(ugly_primes):
+        print(num)
+        if num % ugly_primes[idx] == 0:
+            return ugly_dividable_rec2(num//ugly_primes[idx])
+        else:
+            idx += 1
+    return 0
+
+
+
+def ugly_number_rec2(num):
+    if num > 2**31-1 or num < -(2*31) or num == 0:
+        return False
+    elif num == 1:
+        return True
+    else:
+        test_num = ugly_dividable_rec2(num)
+        if test_num == 0:
+            return False
+        else:
+            return ugly_number_rec2(test_num)
+
 
 
 # print(ugly_dividable(11))
@@ -74,6 +103,6 @@ def ugly_number_rec(num):
 
 # print(ugly_number(6))
 
-print(ugly_number_rec(22))
+print(ugly_number_rec2(6))
 
 
