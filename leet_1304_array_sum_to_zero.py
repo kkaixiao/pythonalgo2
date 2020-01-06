@@ -27,17 +27,18 @@ Constraints:
 def sum_zero(n):
     if n > 1000 or n < 1:
         return []
+
     res = []
     for i in range(n//2):
-        res.append(-(i+1))
+        res.append(-i-1)
     for i in range(n//2, n-1):
         res.append(n-i-1)
 
-    if n%2 != 0:
+    if n % 2 != 0:
         res.append(0)
     else:
         res.append(n//2)
 
-    print(res)
+    return res
 
 print(sum_zero(7))
