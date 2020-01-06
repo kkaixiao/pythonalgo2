@@ -34,8 +34,8 @@ def replace_elements(ints):
 
 def replace_elements2(ints):
     last_val = -1
-    for val in range(len(ints) - 1, -1, -1):
-        ints[val], last_val = last_val, max(ints[val], last_val)
+    for idx in range(len(ints) - 1, -1, -1):
+        ints[idx], last_val = last_val, max(ints[idx], last_val)
     return ints
 
 arr1 = [17,18,5,4,6,1]
