@@ -1,15 +1,37 @@
-class Foo:
+class Foo(object):
+    # check if first function is running
+    running_first = False
+
+    # check if second function is running
+    running_second = False
+
     def __init__(self):
         pass
 
-    def first(self, printFirst: 'Callable[[], None]') -> None:
-        # printFirst() outputs "first". Do not change or remove this line.
+    def first(self, printFirst):
+        # run first
         printFirst()
 
-    def second(self, printSecond: 'Callable[[], None]') -> None:
-        # printSecond() outputs "second". Do not change or remove this line.
+        # mark first function finished
+        self.running_first = True
+
+    def second(self, printSecond):
+        # wait to see if first function finished
+        while not self.running_first:
+            continue
+
+        # run second
         printSecond()
 
-    def third(self, printThird: 'Callable[[], None]') -> None:
-        # printThird() outputs "third". Do not change or remove this line.
+        # mark second finished
+        self.running_second = True
+
+    def third(self, printThird):
+        # wait to see if second function finished
+        while not self.running_second:
+            continue
+
+        # run third and finish all
         printThird()
+
+
