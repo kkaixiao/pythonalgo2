@@ -36,4 +36,5 @@ def find_special_integer(nums):
 # nums1 = [1,2,2,6,6,6,6,7,10]
 
 nums1 = [1,2,3,3]
+
 print(find_special_integer(nums1))
