@@ -26,8 +26,7 @@ def find_special_integer(nums):
 
     for i in range(1, len(nums)):
         if nums[i] == nums[start_pointer]:
-            end_pointer = i
-            if (end_pointer - start_pointer + 1) > len(nums) / 4:
+            if (i - start_pointer + 1) > len(nums) / 4:
                 return nums[i]
         else:
             start_pointer = i
