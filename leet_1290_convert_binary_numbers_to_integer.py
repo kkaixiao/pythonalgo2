@@ -62,6 +62,14 @@ class Solution:
         return res
 
 
+    def getDecimalValue_simple_trick(self, head):
+
+        base2 = ''
+        while head:
+            base2 += str(head.val)
+            head = head.next
+        return int(base2, 2)
+
 arr1 = [1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0]
 
 
