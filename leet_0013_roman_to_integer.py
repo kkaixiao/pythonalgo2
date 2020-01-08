@@ -47,16 +47,35 @@ Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
 
+
 def roman_to_int(chars):
-    dict_roman= {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    dict_roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
     total = prev = dict_roman[chars[0]]
 
     for i in range(1, len(chars)):
         if prev >= dict_roman[chars[i]]:
             total = total + dict_roman[chars[i]]
         else:
-            total = total + dict_roman[chars[i]] - 2*prev
+            total = total + dict_roman[chars[i]] - 2 * prev
         prev = dict_roman[chars[i]]
+
+    return total
+
+
+def roman_to_int2(chars):
+    dict_roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000,
+                  'Z': 4, 'Y': 9, 'W': 40, 'U': 90, 'T': 400, 'S': 900}
+
+    to_replace_cases = ['IV', 'IX', 'XL', 'XC', 'CD', 'CM']
+    replaced_chars = ['Z', 'Y', 'W', 'U', 'T', 'S']
+
+    for i in range(len(to_replace_cases)):
+        if to_replace_cases[i] in chars:
+            chars = chars.replace(to_replace_cases[i], replaced_chars[i])
+
+    total = 0
+    for char in chars:
+        total += dict_roman[char]
 
     return total
 
@@ -64,5 +83,6 @@ def roman_to_int(chars):
 # str1 = 'III'
 # str1 = 'IX'
 str1 = 'LVIII'
+# str1 = 'IV'
 
-print(roman_to_int(str1))
+print(roman_to_int2(str1))
