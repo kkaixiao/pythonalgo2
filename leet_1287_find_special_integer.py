@@ -33,6 +33,7 @@ def find_special_integer(nums):
             start_pointer = i
 
 
+
 # made by Liu Jun, quite a smart approach
 def findSpecialInteger(x):
     if len(x) == 1:
@@ -45,8 +46,23 @@ def findSpecialInteger(x):
         else:
             return x[i]
 
-# nums1 = [1,2,2,6,6,6,6,7,10]
+from math import ceil
 
-nums1 = [1,2,3,3]
+def find_special_integer3(nums):
+    if len(nums) == 1 or len(nums) == 2:
+        return nums[0]
 
-print(find_special_integer(nums1))
+    step = ceil(len(nums)/4)
+
+    for i in range(1, len(nums) - step):
+        if nums[i] == nums[i+step]:
+            return nums[i]
+
+
+
+
+# nums1 = [1,2,3,3]
+
+nums1 = [9057,13452,13452,13452,13452,13452,14141,14448,60395,95081]
+
+print(find_special_integer3(nums1))
