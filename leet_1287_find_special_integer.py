@@ -59,10 +59,37 @@ def find_special_integer3(nums):
             return nums[i]
 
 
+# The answer must be one of (nums[0], nums[l/4], nums[l/2], nums[l*3/4]) where l is the length
+# of nums. What we should do is to find the start and end points of each of the number, we find
+# the special number if (end_pointer - start_pointer + 1) > 0.25
+
+def find_special_integer4(nums):
+    partition_length = len(nums)//4
+    for i in range(4):
+        start_end = find_start_end(nums, i * partition_length)
+        if (start_end[1] - start_end[0] + 1) > len(nums) / 4:
+            return nums[i * partition_length]
+
+
+def find_start_end(nums, idx):
+    start_pointer = end_pointer = idx
+    while 0 < start_pointer:
+        if nums[start_pointer] == nums[start_pointer - 1]:
+            start_pointer -= 1
+        else:
+            break
+
+    while end_pointer < len(nums)-1:
+        if nums[end_pointer] == nums[end_pointer+1]:
+            end_pointer += 1
+        else:
+            break
+
+    return (start_pointer, end_pointer)
 
 
 # nums1 = [1,2,3,3]
+nums1 = [1]
+# nums1 = [10002,10002,13452,13452,14141,14141,14141,14448,60395,76328,95081]
 
-nums1 = [9057,10002,13452,13452,13452,14042,14141,14448,60395,95081]
-
-print(find_special_integer3(nums1))
+print(find_special_integer4(nums1))
