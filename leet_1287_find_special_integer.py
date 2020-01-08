@@ -46,8 +46,8 @@ def findSpecialInteger(x):
         else:
             return x[i]
 
-from math import ceil
 
+from math import ceil
 def find_special_integer3(nums):
     if len(nums) == 1 or len(nums) == 2:
         return nums[0]
