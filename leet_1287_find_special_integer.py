@@ -47,15 +47,15 @@ def findSpecialInteger(x):
             return x[i]
 
 
-from math import ceil
+from math import floor
 def find_special_integer3(nums):
     if len(nums) == 1 or len(nums) == 2:
         return nums[0]
 
-    step = ceil(len(nums)/4)
+    step = floor(len(nums) / 4)
 
-    for i in range(1, len(nums) - step):
-        if nums[i] == nums[i+step]:
+    for i in range(len(nums) - step):
+        if nums[i] == nums[i + step]:
             return nums[i]
 
 
@@ -63,6 +63,6 @@ def find_special_integer3(nums):
 
 # nums1 = [1,2,3,3]
 
-nums1 = [9057,13452,13452,13452,13452,13452,14141,14448,60395,95081]
+nums1 = [9057,10002,13452,13452,13452,14042,14141,14448,60395,95081]
 
 print(find_special_integer3(nums1))
