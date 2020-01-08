@@ -23,14 +23,27 @@ def find_special_integer(nums):
         return nums[0]
 
     start_pointer = 0
+    len_limit = len(nums) / 4 - 1
 
     for i in range(1, len(nums)):
         if nums[i] == nums[start_pointer]:
-            if (i - start_pointer + 1) > len(nums) / 4:
+            if (i - start_pointer) > len_limit:
                 return nums[i]
         else:
             start_pointer = i
 
+
+# made by Liu Jun, quite a smart approach
+def findSpecialInteger(x):
+    if len(x) == 1:
+        return 1
+    list_lens = int(len(x) / 4 + 1)
+    i = 1
+    while i < len(x):
+        if x.count(x[i]) < list_lens:
+            i += list_lens
+        else:
+            return x[i]
 
 # nums1 = [1,2,2,6,6,6,6,7,10]
 
