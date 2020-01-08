@@ -84,12 +84,11 @@ def find_start_end(nums, idx):
             end_pointer += 1
         else:
             break
-
     return (start_pointer, end_pointer)
-
 
 # nums1 = [1,2,3,3]
 # nums1 = [1]
-nums1 = [10002,10002,13452,13452,14141,14141,14141,14448,60395,76328,95081]
+# nums1 = [10002,10002,13452,13452,14141,14141,14141,14448,60395,76328,95081]
+nums1 = [2,3,5,5, 9]
 
 print(find_special_integer4(nums1))
