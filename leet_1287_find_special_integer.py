@@ -62,7 +62,7 @@ def find_special_integer3(nums):
 
 # The answer must be one of (nums[0], nums[l/4], nums[l/2], nums[l*3/4]) where l is the length
 # of nums. What we should do is to find the start and end points of each of the number, we find
-# the special number if (end_pointer - start_pointer + 1) > 0.25
+# the special number if (end_pointer - start_pointer + 1) > 0.25*l
 
 def find_special_integer4(nums):
     partition_length = len(nums)//4
