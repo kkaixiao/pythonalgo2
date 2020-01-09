@@ -75,7 +75,6 @@ def find_special_integer4(nums):
 def find_start_end(nums, idx):
     start_pointer = end_pointer = idx
     while 0 < start_pointer:
-        print(start_pointer, end_pointer)
         if nums[start_pointer] != nums[start_pointer - 1]:
             while end_pointer < len(nums)-1:
                 if nums[end_pointer] == nums[end_pointer + 1]:
