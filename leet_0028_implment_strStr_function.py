@@ -33,7 +33,11 @@ def strStr(haystack, needle):
     return -1
 
 
+def strStr2(haystack, needle):
+    if len(needle) == 0:
+        return 0
 
+    return haystack.find(needle)
 
 
 # haystack1 = 'hello'
@@ -41,4 +45,4 @@ def strStr(haystack, needle):
 haystack1="mississippi"
 needle1="pi"
 
-print(strStr(haystack1, needle1))
+print(strStr2(haystack1, needle1))
