@@ -39,6 +39,7 @@ def findSpecialInteger(x):
     if len(x) == 1:
         return 1
     list_lens = int(len(x) / 4 + 1)
+    list_lens = int(len(x) / 4 + 1)
     i = 1
     while i < len(x):
         if x.count(x[i]) < list_lens:
@@ -74,21 +75,22 @@ def find_special_integer4(nums):
 def find_start_end(nums, idx):
     start_pointer = end_pointer = idx
     while 0 < start_pointer:
-        if nums[start_pointer] == nums[start_pointer - 1]:
+        print(start_pointer, end_pointer)
+        if nums[start_pointer] != nums[start_pointer - 1]:
+            while end_pointer < len(nums)-1:
+                if nums[end_pointer] == nums[end_pointer + 1]:
+                    end_pointer += 1
+                else:
+                    break
+            break
+        else:
             start_pointer -= 1
-        else:
-            break
 
-    while end_pointer < len(nums)-1:
-        if nums[end_pointer] == nums[end_pointer+1]:
-            end_pointer += 1
-        else:
-            break
     return (start_pointer, end_pointer)
 
 # nums1 = [1,2,3,3]
 # nums1 = [1]
-# nums1 = [10002,10002,13452,13452,14141,14141,14141,14448,60395,76328,95081]
-nums1 = [2,3,5,5, 9]
+nums1 = [10002,10002,13452,13452,14141,14141,14141,14448,60395,76328,95081]
+# nums1 = [2,3,5,5, 9]
 
 print(find_special_integer4(nums1))
