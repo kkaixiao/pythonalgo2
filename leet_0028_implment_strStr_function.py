@@ -60,7 +60,7 @@ def strStr_kmp(haystack, needle):
             j += 1
 
         if j == n:
-            print("Found pattern at index " + str(i - j))
+            # print("Found pattern at index " + str(i - j))
             return i - j
             # j = lps[j - 1]
 
@@ -100,10 +100,25 @@ def compute_lps_array(needle, n, lps):
                 i += 1
 
 
+def create_pattern_string(pat):
+    pat_match_indices = [0] * len(pat)
+    to_match_index = 0
+    for i in range(1, len(pat)):
+        if pat[i] == pat[to_match_index]:
+            pat_match_indices[i] = pat_match_indices[i-1] + 1
+            to_match_index += 1
+        else:
+            to_match_index = 0
+
+    return pat_match_indices
+
+
+
 haystack1 = "ABABDABACDABABCABAB"
 needle1 = "ABABCABAB"
-print(strStr_kmp(haystack1, needle1))
+# print(strStr_kmp(haystack1, needle1))
 
+print(create_pattern_string(needle1))
 
 
 # # haystack1 = 'hello'
