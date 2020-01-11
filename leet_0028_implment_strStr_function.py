@@ -99,26 +99,55 @@ def compute_lps_array(needle, n, lps):
                 lps[i] = 0
                 i += 1
 
-
+"""
 def create_pattern_string(pat):
     pat_match_indices = [0] * len(pat)
-    to_match_index = 0
-    for i in range(1, len(pat)):
-        if pat[i] == pat[to_match_index]:
-            pat_match_indices[i] = pat_match_indices[i-1] + 1
-            to_match_index += 1
+
+    gap = 1
+    for current_index in range(1, len(pat)):
+        # print(current_index, gap, current_index - gap)
+
+        # if the current value == prefix, we should set match array as 1
+        if pat[current_index] == pat[current_index - gap]:
+            pat_match_indices[current_index] = pat_match_indices[current_index-1] + 1
+            # ABCDABCABCABABCABCD
         else:
-            to_match_index = 0
+            gap = current_index
+            if pat[current_index] == pat[0]:
+                pat_match_indices[current_index] = 1
+
+    return pat_match_indices
+"""
+
+
+def create_pattern_string2(pat):
+    pat_match_indices = [0] * len(pat)
+
+    tail = 0
+    head = 1
+
+    while head < len(pat):
+
+        if pat[head] == pat[tail]:
+            pat_match_indices[head] = tail + 1
+            tail += 1
+        else:
+            while pat[head] != pat[tail] and tail > 0:
+                tail = pat_match_indices[tail - 1]
+                if pat[head] == pat[tail]:
+                    pat_match_indices[head] = tail+1
+                    tail += 1
+                    break
+        head += 1
 
     return pat_match_indices
 
-
-
-haystack1 = "ABABDABACDABABCABAB"
-needle1 = "ABABCABAB"
+# haystack1 = "ABABDABACDABABCABAB"
+needle1 = "ABCDABCABCABABCFABCD"
+# needle1 = 'aabaabaaa'
 # print(strStr_kmp(haystack1, needle1))
 
-print(create_pattern_string(needle1))
+print(create_pattern_string2(needle1))
 
 
 # # haystack1 = 'hello'
