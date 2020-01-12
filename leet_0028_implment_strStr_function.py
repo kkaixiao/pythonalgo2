@@ -142,17 +142,49 @@ def create_pattern_string2(pat):
 
     return pat_match_indices
 
+
+def strStr_kmp2(haystack, needle):
+    pat_indices = create_pattern_string2(needle)
+    index_haystack = index_needle = 0
+
+    while index_haystack < len(haystack) and index_needle < len(needle):
+        if haystack[index_haystack] == needle[index_needle]:
+            if index_needle == len(needle) - 1:
+                return index_haystack - index_needle
+            index_needle += 1
+            index_haystack += 1
+        else:
+            while index_needle >= 0:
+                index_needle = pat_indices[index_needle -1]
+                if haystack[index_haystack] == needle[index_needle]:
+                    index_haystack += 1
+                    index_needle += 1
+                    break
+                else:
+                    index_haystack += 1
+
+
+
+
+
+
+
 # haystack1 = "ABABDABACDABABCABAB"
-needle1 = "ABCDABCABCABABCFABCD"
+# needle1 = "ABCDABCABCABABCFABCD"
 # needle1 = 'aabaabaaa'
-# print(strStr_kmp(haystack1, needle1))
-
-print(create_pattern_string2(needle1))
 
 
-# # haystack1 = 'hello'
-# # needle1 = 'll'
+
+# print(create_pattern_string2(needle1))
+
+
+# haystack1 = 'hello'
+# needle1 = 'el'
 # haystack1="mississippi"
 # needle1="pi"
 #
 # print(strStr2(haystack1, needle1))
+
+needle1 = 'abcaby'
+haystack1 = 'abxabcabcaby'
+print(strStr_kmp2(haystack1, needle1))
