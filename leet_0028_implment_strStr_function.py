@@ -155,7 +155,7 @@ def strStr_kmp2(haystack, needle):
             index_haystack += 1
         else:
             while index_needle >= 0:
-                index_needle = pat_indices[index_needle -1]
+                index_needle = pat_indices[index_needle - 1]
                 if haystack[index_haystack] == needle[index_needle]:
                     index_haystack += 1
                     index_needle += 1
