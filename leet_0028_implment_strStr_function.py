@@ -202,17 +202,17 @@ def strStr_kmp3(haystack, needle):
     pat_indices = create_pattern_string2(needle)
 
     while i < len_haystack:
-        # found one char matches
-        if needle[j] == haystack[i]:
+
+        if needle[j] == haystack[i]:  # found one char matches, increment both i and j
             i += 1
             j += 1
-        # found all chars match
-        if j == len_needle:
+
+        if j == len_needle:   # found all chars match, return the index: i - j
             return i - j
-        elif i < len_haystack and haystack[i] != needle[j]:
-            if j != 0:
+        elif i < len_haystack and haystack[i] != needle[j]:   # if not match and haystack has not been iterated
+            if j != 0:  # if needle is not at the top (always 0), find the previous index which shows the starting point
                 j = pat_indices[j-1]
-            else:
+            else:   # already in the pattern index top, iterate haystack only now
                 i += 1
     return -1
 
