@@ -191,7 +191,7 @@ haystack1 = 'h3lloo'
 # needle1 = 'el'
 # haystack1="mississippi"
 needle1 = "oo"
-#
+
 # print(strStr2(haystack1, needle1))
 
 # needle1 = 'abcaby'
