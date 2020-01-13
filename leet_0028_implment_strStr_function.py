@@ -144,7 +144,6 @@ def create_pattern_string2(pat):
     return pat_match_indices
 
 
-
 def strStr_kmp2(haystack, needle):
     if len(needle) < 1:
         return -1
