@@ -52,6 +52,7 @@ def strStr_kmp(haystack, needle):
 
     # Preprocess the pattern (calculate lps[] array)
     compute_lps_array(needle, n, lps)
+    print(lps)
 
     i = 0  # index for txt[]
     while i < m:
@@ -143,6 +144,7 @@ def create_pattern_string2(pat):
     return pat_match_indices
 
 
+
 def strStr_kmp2(haystack, needle):
     if len(needle) < 1:
         return -1
@@ -153,18 +155,19 @@ def strStr_kmp2(haystack, needle):
         return -1
 
     pat_indices = create_pattern_string2(needle)
-    index_haystack = index_needle = 0
     print(pat_indices)
+
+    index_haystack = index_needle = 0
+
     while index_haystack < len(haystack) and index_needle < len(needle):
         if haystack[index_haystack] == needle[index_needle]:
-            # print(index_haystack, index_needle)
             if index_needle == len(needle) - 1:
                 return index_haystack - index_needle
+            # print(index_needle, index_haystack)
             index_needle += 1
             index_haystack += 1
         else:
             while index_needle >= 0 and index_haystack < len(haystack):
-                # print(index_haystack, index_needle)
                 if index_needle != 0:
                     index_needle = pat_indices[index_needle - 1]
                 else:
@@ -177,7 +180,42 @@ def strStr_kmp2(haystack, needle):
                 else:
                     index_haystack += 1
 
+
     return -1
+
+
+def strStr_kmp3(haystack, needle):
+    if len(needle) < 1:
+        return -1
+
+    if len(needle) == 1:
+        for i in range(len(haystack)):
+            if haystack[i] == needle:
+                return i
+        return -1
+
+    i = 0  # index for haystack
+    j = 0  # index for needle
+    len_haystack = len(haystack)
+    len_needle = len(needle)
+
+    pat_indices = create_pattern_string2(needle)
+
+    while i < len_haystack:
+        # found one char matches
+        if needle[j] == haystack[i]:
+            i += 1
+            j += 1
+        # found all chars match
+        if j == len_needle:
+            return i - j
+        elif i < len_haystack and haystack[i] != needle[j]:
+            if j != 0:
+                j = pat_indices[j-1]
+            else:
+                i += 1
+    return -1
+
 
 
 # haystack1 = "ABABDABACDABABCABAB"
@@ -187,13 +225,16 @@ def strStr_kmp2(haystack, needle):
 # print(create_pattern_string2(needle1))
 
 
-haystack1 = 'h3lloo'
+# haystack1 = 'h3lloo'
 # needle1 = 'el'
 # haystack1="mississippi"
-needle1 = "oo"
+# needle1 = "oo"
 
+haystack1 = "ababaabbbbababbaabaaabaabbaaaabbabaabbbbbbabbaabbabbbabbbbbaaabaababbbaabbbabbbaabbbbaaabbababbabbbabaaabbaabbabababbbaaaaaaababbabaababaabbbbaaabbbabb"
+needle1 = "abbabbbabaa"
 # print(strStr2(haystack1, needle1))
 
 # needle1 = 'abcaby'
 # haystack1 = 'abxabcabcaby'
-print(strStr_kmp2(haystack1, needle1))
+print(strStr_kmp3(haystack1, needle1))
+# print(strStr_kmp(haystack1, needle1))
