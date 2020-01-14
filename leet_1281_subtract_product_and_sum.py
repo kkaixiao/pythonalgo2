@@ -41,7 +41,15 @@ def subtract_product_and_sum2(num):
     return product_num - sum_num
 
 
+from functools import reduce
+
+def subtract_product_and_sum3(num):
+    return reduce(lambda x, y: x*y, [int(x) for x in str(num)]) - \
+           reduce(lambda x, y: x+y, [int(x) for x in str(num)])
 
 
 
-print(subtract_product_and_sum(4567801))
+
+# print(subtract_product_and_sum(4567801))
+
+print(subtract_product_and_sum3(1234))
