@@ -50,10 +50,11 @@ def is_palindrome2(chars):
     if len(chars) == 1 or len(chars) == 0:
         return True
 
-    alpha_numeric_removed_chars = filter(lambda x: (ord(x) in range(65, 91)) or (ord(x) in range(48, 58)) or (ord(x) in range(97, 122)), chars)
+    alpha_numeric_removed_chars = filter(lambda x: (ord(x) in range(65, 91)) or (ord(x) in range(48, 58)) or (ord(x) in range(97, 123)), chars)
 
     processed_chars = list(map(lambda x: chr(ord(x) - 32) if ord(x) in range(97, 123) else x, alpha_numeric_removed_chars))
 
+    print(processed_chars)
     for i in range(len(processed_chars)//2):
         if processed_chars[i] != processed_chars[len(processed_chars)-i-1]:
             return False
@@ -61,10 +62,11 @@ def is_palindrome2(chars):
     return True
 
 #
-# for i in range(256):
-#     print(i, chr(i))
+for i in range(256):
+    print(i, chr(i))
 
-str1 = "A man, a plan, a canal: Panama"
+# str1 = "A man, a plan, a canal: Panama"
 # str1 = "race a car"
 
+str1 = "Zeus was deified, saw Suez."
 print(is_palindrome2(str1))
