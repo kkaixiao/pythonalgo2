@@ -61,9 +61,7 @@ def is_palindrome2(chars):
 
     return True
 
-#
-for i in range(256):
-    print(i, chr(i))
+
 
 # str1 = "A man, a plan, a canal: Panama"
 # str1 = "race a car"
