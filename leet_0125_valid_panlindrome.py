@@ -54,7 +54,7 @@ def is_palindrome2(chars):
 
     processed_chars = list(map(lambda x: chr(ord(x) - 32) if ord(x) in range(97, 123) else x, alpha_numeric_removed_chars))
 
-    print(processed_chars)
+    # print(processed_chars)
     for i in range(len(processed_chars)//2):
         if processed_chars[i] != processed_chars[len(processed_chars)-i-1]:
             return False
