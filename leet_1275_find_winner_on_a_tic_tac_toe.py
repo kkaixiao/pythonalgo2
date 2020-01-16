@@ -71,6 +71,7 @@ moves follow the rules of tic tac toe.
 
 
 def tictactoe(moves):
+
     a_plays = []
     b_plays = []
 
