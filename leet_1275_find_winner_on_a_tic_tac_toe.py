@@ -80,14 +80,11 @@ def tictactoe(moves):
         else:
             a_plays.append(moves[i])
 
-    a_win = judge_win(a_plays)
-    b_win = judge_win(b_plays)
-
-    if a_win:
+    if judge_win(a_plays):
         return 'A'
-    if b_win:
+    if judge_win(b_plays):
         return 'B'
-    if not a_win and not b_win:
+    if not judge_win(a_plays) and not judge_win(b_plays):
         if len(moves) == 9:
             return 'Draw'
         else:
@@ -98,12 +95,10 @@ def judge_win(moves):
     if len(moves) < 3:
         return False
 
-    v_dict = {}
-    h_dict = {}
+    v_dict = h_dict = {}
 
     for move in moves:
         v_dict[move[0]] = v_dict.get(move[0], 0) + 1
-
         h_dict[move[1]] = h_dict.get(move[1], 0) + 1
 
     for _, v in v_dict.items():
@@ -137,21 +132,21 @@ def judge_win(moves):
 
 
 # moves1 = [[0,0],[2,0],[1,1],[2,1],[2,2]]  # A
-
+#
 # moves1 = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]  # B
-
+#
 # moves1 = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]  # Draw
-#
+
 # moves1 = [[0,0],[1,1]]  # Pending
-
+#
 # moves1 = [[1,2],[1,0],[0,0],[0,1],[2,1]]  # Pending
-#
-# moves1 = [[1,2],[2,1],[1,0],[0,0],[0,1],[2,0],[1,1]]  # A
-#
-# moves1 = [[2,2],[0,2],[1,0],[0,1],[2,0],[0,0]]  # B
-#
-# moves1 = [[2,0],[1,1],[0,2],[2,1],[1,2],[1,0],[0,0],[0,1]]  #B
 
-moves1 = [[1,0],[2,2],[0,1],[0,2],[2,1],[1,1],[0,0],[2,0]]  #B
+# moves1 = [[1,2],[2,1],[1,0],[0,0],[0,1],[2,0],[1,1]]  # A
+
+# moves1 = [[2,2],[0,2],[1,0],[0,1],[2,0],[0,0]]  # B
+
+# moves1 = [[2,0],[1,1],[0,2],[2,1],[1,2],[1,0],[0,0],[0,1]]  # B
+#
+moves1 = [[1,0],[2,2],[0,1],[0,2],[2,1],[1,1],[0,0],[2,0]]  # B
 
 print(tictactoe(moves1))
