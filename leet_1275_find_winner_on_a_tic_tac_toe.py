@@ -135,11 +135,23 @@ def judge_win(moves):
     return False
 
 
+import re
+
+
+def tictactoe3(moves):
+    grid = [' '] * 16
+    for i, (y, x) in enumerate(moves):
+        grid[4 * y + x] = p = 'AB'[i & 1]
+
+        if re.search(f"{p}{{3}}|({p}..){{3}}|({p}...){{3}}|({p}....){{3}}", ''.join(grid)): return p
+
+    return ('Pending', 'Draw')[len(moves) == 9]
+
 # moves1 = [[0,0],[2,0],[1,1],[2,1],[2,2]]  # A
 
 # moves1 = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]  # B
 
-# moves1 = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]  # Draw
+moves1 = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]  # Draw
 #
 # moves1 = [[0,0],[1,1]]  # Pending
 
@@ -150,7 +162,9 @@ def judge_win(moves):
 # moves1 = [[2,2],[0,2],[1,0],[0,1],[2,0],[0,0]]  # B
 #
 # moves1 = [[2,0],[1,1],[0,2],[2,1],[1,2],[1,0],[0,0],[0,1]]  # B
+#
+# moves1 = [[1,0],[2,2],[0,1],[0,2],[2,1],[1,1],[0,0],[2,0]]  # B
 
-moves1 = [[1,0],[2,2],[0,1],[0,2],[2,1],[1,1],[0,0],[2,0]]  # B
+# print(tictactoe(moves1))
 
-print(tictactoe(moves1))
+print(tictactoe3(moves1))
