@@ -13,7 +13,6 @@ Explanation:
 """
 
 
-
 def filter_arr(tuple1):
     nums2, num1 = tuple1
     return [x for x in nums2[1:] if num1 < x]
