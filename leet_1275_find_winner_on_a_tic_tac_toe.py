@@ -82,8 +82,10 @@ def tictactoe(moves):
 
     if judge_win(a_plays):
         return 'A'
+
     if judge_win(b_plays):
         return 'B'
+
     if not judge_win(a_plays) and not judge_win(b_plays):
         if len(moves) == 9:
             return 'Draw'
@@ -95,7 +97,8 @@ def judge_win(moves):
     if len(moves) < 3:
         return False
 
-    v_dict = h_dict = {}
+    v_dict = {}
+    h_dict = {}
 
     for move in moves:
         v_dict[move[0]] = v_dict.get(move[0], 0) + 1
