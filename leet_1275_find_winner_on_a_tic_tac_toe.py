@@ -116,8 +116,7 @@ def judge_win(moves):
 
     diagonal1 = diagonal2 = 0
 
-    diagonal_points1 = [[0, 0], [2, 2]]
-    diagonal_points2 = [[0, 2], [2, 0]]
+    diagonal_points1, diagonal_points2 = [[0, 0], [2, 2]], [[0, 2], [2, 0]]
 
     has_center = False
 
