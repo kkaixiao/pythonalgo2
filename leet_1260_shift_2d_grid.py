@@ -43,20 +43,51 @@ class Solution:
         grid[0].insert(0, grid[m-1].pop())
 
 
+    def shiftGrid2(self, grid, k):
+        m = len(grid)
+        n = len(grid[0])
+
+        step = k%(m*n)
+        flat_list = self.flatten(grid)
+
+        shifted_flat_list = flat_list[m*n-step:]
+        shifted_flat_list.extend(flat_list[:m*n-step])
+        grid = self.flat_array_to_grid(shifted_flat_list, m, n)
+
+
+        return grid
+
+    def flat_array_to_grid(self, arr, m, n):
+        mat = []
+        for i in range(m):
+            row = []
+            for j in range(n):
+                row.append(arr[i*n+j])
+            mat.append(row)
+        return mat
+
+
+    def flatten(selfs, grid):
+        a_list = []
+        for arr in grid:
+            for item in arr:
+                a_list.append(item)
+        return a_list
 
 
 
 
-# grid1 = [[1,2,3],[4,5,6],[7,8,9]]
-# k1 = 1
 
-grid1 = [[1],[2],[3],[4],[7],[6],[5]]
-k1 = 23
+grid1 = [[1,2,3],[4,5,6],[7,8,9]]
+k1 = 2
+
+# grid1 = [[1],[2],[3],[4],[7],[6],[5]]
+# k1 = 23
 #
 # grid1 = [[1]]
 # k1 = 100
 mysolution = Solution()
-print(mysolution.shiftGrid(grid1, k1))
+print(mysolution.shiftGrid2(grid1, k1))
 
 
 
