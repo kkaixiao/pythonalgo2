@@ -75,6 +75,7 @@ class Solution:
 
     def shiftGrid3(self, grid, k):
         m, n = len(grid), len(grid[0])
+        k = k % (m * n)
 
         res = [[None]*n for _ in range(m)]
         # res = [[None] * n]*m
