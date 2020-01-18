@@ -77,8 +77,11 @@ class Solution:
         m, n = len(grid), len(grid[0])
         k = k % (m * n)
 
-        res = [[None]*n for _ in range(m)]
+        # res = [[None]*n for _ in range(m)]
+        #
         # res = [[None] * n]*m
+        res = [[None for _ in range(n)] for _ in range(m)]
+
         # print(res)
         for i in range(m):
             for j in range(n):
@@ -86,7 +89,11 @@ class Solution:
                 x = (i + int((j + k) / n)) % m
                 res[x][y] = grid[i][j]
 
-        return res
+        # for arr in res:
+        #     for item in arr:
+        #         print(id(item))
+        #
+        # return res
 
 
 grid1 = [[1,2,3],[4,5,6],[7,8,9]]
