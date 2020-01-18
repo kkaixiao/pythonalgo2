@@ -86,14 +86,14 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 y = (j + k) % n
-                x = (i + int((j + k) / n)) % m
+                x = (i + (j + k) // n) % m
                 res[x][y] = grid[i][j]
 
         # for arr in res:
         #     for item in arr:
         #         print(id(item))
         #
-        # return res
+        return res
 
 
 grid1 = [[1,2,3],[4,5,6],[7,8,9]]
