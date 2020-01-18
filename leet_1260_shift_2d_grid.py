@@ -25,7 +25,7 @@ Example 3:
 Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9
 Output: [[1,2,3],[4,5,6],[7,8,9]]
 """
-
+import math
 
 class Solution:
     def shiftGrid(self, grid, k):
@@ -42,7 +42,6 @@ class Solution:
             grid[i+1].insert(0, grid[i].pop())
         grid[0].insert(0, grid[m-1].pop())
 
-
     def shiftGrid2(self, grid, k):
         m = len(grid)
         n = len(grid[0])
@@ -53,7 +52,6 @@ class Solution:
         shifted_flat_list = flat_list[m*n-step:]
         shifted_flat_list.extend(flat_list[:m*n-step])
         grid = self.flat_array_to_grid(shifted_flat_list, m, n)
-
 
         return grid
 
@@ -75,11 +73,27 @@ class Solution:
         return a_list
 
 
+    def shiftGrid3(self, grid, k):
+        m, n = len(grid), len(grid[0])
 
+        res = [[None]*n for _ in range(m)]
+        # res = [[None] * n]*m
+        # print(res)
+        for i in range(m):
+            for j in range(n):
+                y = (j + k) % n
+                x = (i + int((j + k) / n)) % m
+                res[x][y] = grid[i][j]
+
+        return res
 
 
 grid1 = [[1,2,3],[4,5,6],[7,8,9]]
+#     = [[8,9,1],[2,3,4],[5,6,7]]
+#
 k1 = 2
+
+
 
 # grid1 = [[1],[2],[3],[4],[7],[6],[5]]
 # k1 = 23
@@ -87,7 +101,7 @@ k1 = 2
 # grid1 = [[1]]
 # k1 = 100
 mysolution = Solution()
-print(mysolution.shiftGrid2(grid1, k1))
+print(mysolution.shiftGrid3(grid1, k1))
 
 
 
