@@ -39,8 +39,25 @@ class Solution:
         return count
 
 
+    def oddCells2(self, n, m, indices):
+        row_count_array = [0] * n
+        col_count_array = [0] * m
+        for idx in indices:
+            row_count_array[idx[0]] += 1
+            col_count_array[idx[1]] += 1
+
+        row_cnt = sum([1 for r in row_count_array if r % 2 == 1])
+
+        col_cnt = sum([1 for c in col_count_array if c % 2 == 1])
+
+        odd_number = row_cnt * m + (n - row_cnt) * col_cnt - row_cnt * col_cnt
+
+        return odd_number
+
+
 oddCells1 = Solution()
 
-# print(oddCells1.oddCells(2, 3, [[0,1],[1,1]]))
 
-print(oddCells1.oddCells(2, 2, [[1,1],[0,0]]))
+print(oddCells1.oddCells2(2, 3, [[0,1],[1,1]]))
+#
+# print(oddCells1.oddCells2(2, 2, [[1,1],[0,0]]))
