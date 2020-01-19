@@ -33,8 +33,9 @@ class Solution:
         count = 0
         for i in range(n):
             for j in range(m):
-                if mat[i][j] % 2:
-                    count += 1
+                # if mat[i][j] % 2:
+                #     count += 1
+                count += mat[i][j] % 2
 
         return count
 
@@ -58,6 +59,6 @@ class Solution:
 oddCells1 = Solution()
 
 
-print(oddCells1.oddCells2(2, 3, [[0,1],[1,1]]))
+print(oddCells1.oddCells(2, 3, [[0,1],[1,1]]))
 #
 # print(oddCells1.oddCells2(2, 2, [[1,1],[0,0]]))
