@@ -33,7 +33,7 @@ class Solution:
                 if nums[i] + nums[j] == target:
                     return [i, j]
 
-    # hash table method （1-round) # better
+    # hash table method （2-round) # better
     def twoSum3(self, nums, target):
         if len(nums) == 2:
             return [0, 1]
@@ -51,13 +51,15 @@ class Solution:
             if nums_dict.get(second_num, 0) > 0:
                 return [i, nums[i+1:].index(second_num)+i+1]
 
-    # hash table method （2-round) # much better
+    # hash table method （1-round) # much better
     def twoSum4(self, nums, target):
         nums_dict = {}
         for i in range(len(nums)):
+            # if one key does not exist, we use default value of 0
             if nums_dict.get((target - nums[i]), 0) > 0:
                 return [i, nums_dict[target - nums[i]]-1]
 
+            # we increment value to set to a key/value pair
             nums_dict[nums[i]] = i+1
 
 
