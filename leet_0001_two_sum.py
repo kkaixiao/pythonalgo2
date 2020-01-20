@@ -62,7 +62,17 @@ class Solution:
             # we increment value to set to a key/value pair
             nums_dict[nums[i]] = i+1
 
+    # worst method by using combinations class
+    def twoSum5(self, nums, target):
+        from itertools import combinations as combine
 
+        for i in list(combine(nums, 2)):
+            a, b = i
+            if a + b == target:
+                a_index = nums.index(a)
+                nums[a_index] = None
+                b_index = nums.index(b)
+                return [a_index, b_index]
 
 
 
@@ -78,11 +88,11 @@ class Solution:
 # nums1 = [11,2,7,14]
 # target1 = 21
 
-# nums1 = [3,2,3]
-# target1 = 6
+nums1 = [3,2,3]
+target1 = 6
 
-nums1 = [3,2,95,4,-3]
-target1 = 92
+# nums1 = [3,2,95,4,-3, 72, 23, -5, 4]
+# target1 = 92
 
 sol1 = Solution()
-print(sol1.twoSum4(nums1, target1))
+print(sol1.twoSum5(nums1, target1))
