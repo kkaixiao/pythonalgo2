@@ -51,8 +51,7 @@ class Solution:
             if nums_dict.get(second_num, 0) > 0:
                 return [i, nums[i+1:].index(second_num)+i+1]
 
-
-    # hash table method （2-round)
+    # hash table method （2-round) # much better
     def twoSum4(self, nums, target):
         nums_dict = {}
         for i in range(len(nums)):
