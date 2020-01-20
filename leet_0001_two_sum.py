@@ -15,9 +15,9 @@ return [0, 1].
 
 
 class Solution:
+    # try | exception with index search method # not good
     def twoSum(self, nums, target):
         for i in range(len(nums)-1):
-            idx = 0
             try:
                 idx = nums.index(target - nums[i], i+1, len(nums))
             except ValueError:
@@ -26,13 +26,14 @@ class Solution:
             if idx > 0:
                 return [i, idx]
 
+    # brutal force method # not good
     def twoSum2(self, nums, target):
         for i in range(len(nums)-1):
             for j in range(i+1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
 
-
+    # hash table method （1-round) # better
     def twoSum3(self, nums, target):
         if len(nums) == 2:
             return [0, 1]
@@ -45,9 +46,20 @@ class Solution:
         for i in range(len(nums)):
             first_num = nums[i]
             nums_dict[first_num] = nums_dict.get(first_num) - 1
+
             second_num = target - first_num
             if nums_dict.get(second_num, 0) > 0:
                 return [i, nums[i+1:].index(second_num)+i+1]
+
+
+    # hash table method （2-round)
+    def twoSum4(self, nums, target):
+        nums_dict = {}
+        for i in range(len(nums)):
+            if nums_dict.get((target - nums[i]), 0) > 0:
+                return [i, nums_dict[target - nums[i]]-1]
+
+            nums_dict[nums[i]] = i+1
 
 
 
@@ -72,4 +84,4 @@ nums1 = [3,2,95,4,-3]
 target1 = 92
 
 sol1 = Solution()
-print(sol1.twoSum3(nums1, target1))
+print(sol1.twoSum4(nums1, target1))
