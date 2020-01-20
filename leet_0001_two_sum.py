@@ -34,26 +34,42 @@ class Solution:
 
 
     def twoSum3(self, nums, target):
-        nums_copy = nums.copy()
-        nums.sort()
-        for start_idx in range(len(nums) - 2):
-            for end_idx in range(len(nums) - 1, start_idx, -1):
-                print(start_idx, end_idx)
-                if nums[start_idx] + nums[end_idx] == target:
+        if len(nums) == 2:
+            return [0, 1]
 
-                    return [nums_copy.index(nums[start_idx]), nums_copy.index(nums[end_idx])]
+        nums_dict = {}
+
+        for num in nums:
+            nums_dict[num] = nums_dict.get(num, 0) + 1
+
+        for i in range(len(nums)):
+            first_num = nums[i]
+            nums_dict[first_num] = nums_dict.get(first_num) - 1
+            second_num = target - first_num
+            if nums_dict.get(second_num, 0) > 0:
+                return [i, nums[i+1:].index(second_num)+i+1]
 
 
 
 
 
-# nums1 = [2, 7, 11, 15]
-# target1 = 9
+
+
+
+# nums1 = [11, 2, 7, 11]
+# target1 = 22
 
 # nums1 = [3,2,4]
 # target1 = 6
 
-nums1 = [2,7,11,14]
-target1 = 9
+# nums1 = [11,2,7,14]
+# target1 = 21
+
+# nums1 = [3,2,3]
+# target1 = 6
+
+nums1 = [3,2,95,4,-3]
+target1 = 92
+
 sol1 = Solution()
 print(sol1.twoSum3(nums1, target1))
