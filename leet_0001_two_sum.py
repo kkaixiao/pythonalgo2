@@ -74,13 +74,34 @@ class Solution:
                 b_index = nums.index(b)
                 return [a_index, b_index]
 
+    # Recursion function, not so efficient
+    def twoSum6(self, nums, target, rec_nums=[]):
+
+        if not len(rec_nums):
+            rec_nums = nums.copy()
+            rec_nums.sort()
+
+        if rec_nums[0] + rec_nums[-1] == target:
+            a_index = nums.index(rec_nums[0])
+            nums[a_index] = None
+            b_index = nums.index(rec_nums[-1])
+            return [a_index, b_index]
+
+        if rec_nums[-1] + rec_nums[0] > target:
+            rec_nums.pop()
+            return self.twoSum6(nums, target, rec_nums)
+        elif rec_nums[-1] + rec_nums[0] < target:
+            rec_nums.pop(0)
+            return self.twoSum6(nums, target, rec_nums)
+        elif rec_nums[0] + rec_nums[-1] == target:
+            a_index = nums.index(rec_nums[0])
+            nums[a_index] = None
+            b_index = nums.index(rec_nums[-1])
+            return [a_index, b_index]
 
 
-
-
-
-# nums1 = [11, 2, 7, 11]
-# target1 = 22
+nums1 = [11, 2, 7, 11]
+target1 = 22
 
 # nums1 = [3,2,4]
 # target1 = 6
@@ -88,8 +109,8 @@ class Solution:
 # nums1 = [11,2,7,14]
 # target1 = 21
 
-nums1 = [3,2,3]
-target1 = 6
+# nums1 = [3,2,3]
+# target1 = 6
 
 # nums1 = [3,2,95,4,-3, 72, 23, -5, 4]
 # target1 = 92
