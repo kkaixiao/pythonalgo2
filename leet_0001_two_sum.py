@@ -62,7 +62,7 @@ class Solution:
             # we increment value to set to a key/value pair
             nums_dict[nums[i]] = i+1
 
-    # worst method by using combinations class
+    # worst method by using combinations class, # Memory Limit Exceeded in leetcode#
     def twoSum5(self, nums, target):
         from itertools import combinations as combine
 
