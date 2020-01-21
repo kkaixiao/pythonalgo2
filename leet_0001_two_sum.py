@@ -100,6 +100,33 @@ class Solution:
             return [a_index, b_index]
 
 
+    # Recursion function with deque
+    def twoSum7(self, nums, target, rec_nums=[]):
+        from collections import deque
+
+        if not len(rec_nums):
+            rec_nums = nums.copy()
+            rec_nums.sort()
+            rec_nums = deque(rec_nums)
+
+        if rec_nums[0] + rec_nums[-1] == target:
+            a_index = nums.index(rec_nums[0])
+            nums[a_index] = None
+            b_index = nums.index(rec_nums[-1])
+            return [a_index, b_index]
+
+        if rec_nums[-1] + rec_nums[0] > target:
+            rec_nums.pop()
+            return self.twoSum7(nums, target, rec_nums)
+        elif rec_nums[-1] + rec_nums[0] < target:
+            rec_nums.popleft()
+            return self.twoSum7(nums, target, rec_nums)
+        elif rec_nums[0] + rec_nums[-1] == target:
+            a_index = nums.index(rec_nums[0])
+            nums[a_index] = None
+            b_index = nums.index(rec_nums[-1])
+            return [a_index, b_index]
+
 nums1 = [11, 2, 7, 11]
 target1 = 22
 
@@ -116,4 +143,4 @@ target1 = 22
 # target1 = 92
 
 sol1 = Solution()
-print(sol1.twoSum5(nums1, target1))
+print(sol1.twoSum7(nums1, target1))
