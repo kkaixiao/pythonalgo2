@@ -97,7 +97,5 @@ class Solution:
 
 
 
-
-
 mysolution = Solution()
 print(mysolution.countAndSay(13))
