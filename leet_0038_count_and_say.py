@@ -65,8 +65,39 @@ class Solution:
 
 
     def countAndSay(self, n):
-        if n == 1:
-            return '11'
+        word_dict = {1: '1', 2: '11', 3: '21', 4: '1211', 5: '111221', 6: '312211', 7: '13112221',
+                     8: '1113213211', 9: '31131211131221', 10: '13211311123113112211'
+                     }
+        if n < 11:
+            return word_dict[n]
+
+
+        for i in range(11, n+1):
+            pre_say = word_dict[i-1]
+            temp_char = pre_say[0]
+            temp_count = 1
+            dict_str = ''
+
+            for j in range(1, len(pre_say)):
+                if temp_char == pre_say[j]:
+                    temp_count += 1
+                else:
+                    dict_str += str(temp_count) + temp_char
+                    temp_count = 1
+                    temp_char = pre_say[j]
+                if j == len(pre_say) - 1:
+                    dict_str += str(temp_count) + pre_say[j]
+
+
+
+            word_dict[i] = dict_str
+
+        return(word_dict[n])
+
+
+
+
+
 
 mysolution = Solution()
-print(mysolution.countAndSay(5))
+print(mysolution.countAndSay(13))
