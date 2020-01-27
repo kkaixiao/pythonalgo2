@@ -64,13 +64,12 @@ class Solution:
         return new_num
 
 
-    def countAndSay(self, n):
+    def countAndSay1(self, n):
         word_dict = {1: '1', 2: '11', 3: '21', 4: '1211', 5: '111221', 6: '312211', 7: '13112221',
                      8: '1113213211', 9: '31131211131221', 10: '13211311123113112211'
                      }
         if n < 11:
             return word_dict[n]
-
 
         for i in range(11, n+1):
             pre_say = word_dict[i-1]
@@ -88,14 +87,29 @@ class Solution:
                 if j == len(pre_say) - 1:
                     dict_str += str(temp_count) + pre_say[j]
 
-
-
             word_dict[i] = dict_str
 
-        return(word_dict[n])
+        return word_dict[n]
 
 
+    def countAndSay(self, n):
+        if n == 1:
+            return '1'
 
+        res = ''
+        prev_result = self.countAndSay(n - 1)
+        prev_len = len(prev_result)
+        count = 1
+
+        for i in range(prev_len):
+            if (i != prev_len - 1) and prev_result[i + 1] == prev_result[i]:
+                count += 1
+                continue
+
+            res += str(count) + prev_result[i]
+            count = 1
+
+        return res
 
 mysolution = Solution()
 print(mysolution.countAndSay(13))
