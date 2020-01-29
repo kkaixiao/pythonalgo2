@@ -69,8 +69,32 @@ class Solution:
         nums.reverse()
 
 
+    def removeDuplicates3(self, nums):
+        idx = 0
+        for i in range(1, len(nums)):
+            if nums[idx] != nums[i]:
+                nums[idx+1] = nums[i]
+                idx += 1
+
+        return idx + 1
+
+    def removeDuplicates4(self, nums):
+        if not nums:
+            return 0
+        len_nums = len(nums)
+        prev_num = nums[0]
+        temp_nums = []
+        temp_nums.append(prev_num)
+
+        for i in range(1, len_nums):
+            if prev_num != nums[i]:
+                temp_nums.append(nums[i])
+            prev_num = nums[i]
+        nums.clear()
+        nums.extend(temp_nums)
+
 
 # nums1 = [1,1,2]
 nums1 = [0,0,1,1,1,2,2,3,3,4]
 mysolution = Solution()
-print(mysolution.removeDuplicates2(nums1))
+print(mysolution.removeDuplicates4(nums1))
