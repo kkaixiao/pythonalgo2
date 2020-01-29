@@ -105,7 +105,31 @@ class Solution:
         # print(nums)
         return idx
 
+    def removeDuplicates6(self, nums):
+
+        if not nums:
+            return 0
+
+        from collections import deque
+
+        len_nums = len(nums)
+        prev_num = nums[0]
+        nums.append(nums[0])
+
+        for i in range(1, len_nums):
+            if prev_num != nums[i]:
+                nums.append(nums[i])
+            prev_num = nums[i]
+
+        dq_nums = deque(nums)
+        nums.clear()
+        for _ in range(len_nums):
+            dq_nums.popleft()
+        nums.extend(list(dq_nums))
+
+
+
 # nums1 = [1,1,2]
 nums1 = [0,0,1,1,1,2,2,3,3,4]
 mysolution = Solution()
-print(mysolution.removeDuplicates5(nums1))
+print(mysolution.removeDuplicates6(nums1))
