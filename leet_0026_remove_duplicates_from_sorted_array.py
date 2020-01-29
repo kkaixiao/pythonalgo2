@@ -94,7 +94,18 @@ class Solution:
         nums.extend(temp_nums)
 
 
+    def removeDuplicates5(self, nums):
+        prev_num = None
+        idx = 0
+        for item in nums:
+            if item != prev_num:
+                prev_num = item
+                nums[idx] = item
+                idx += 1
+        # print(nums)
+        return idx
+
 # nums1 = [1,1,2]
 nums1 = [0,0,1,1,1,2,2,3,3,4]
 mysolution = Solution()
-print(mysolution.removeDuplicates4(nums1))
+print(mysolution.removeDuplicates5(nums1))
