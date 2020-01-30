@@ -96,7 +96,23 @@ class Solution:
         else:
             return judge_idx + 1
 
+    def findJudge4(self, n, trust):
+        if n == 1:
+            return 1
+        res = -1
+        arr_trust = [0] * (n+1)
 
+        for case in trust:
+            arr_trust[case[0]] += 1
+            arr_trust[case[1]] -= 2
+            if arr_trust[case[1]] == -2*(n-1):
+                res = case[1]
+        print(arr_trust)
+        return res
+
+
+# n1 = 4
+# trust1 = [[1,3],[1,4],[2,3],[2,4],[4,3]]
 
 # n1 = 2
 # trust1 = [[1,2]]
@@ -104,15 +120,14 @@ class Solution:
 # n1 = 3
 # trust1 = [[1,3],[2,3]]
 #
-# n1 = 3
-# trust1 = [[1,3],[2,3],[3,1]]
+n1 = 3
+trust1 = [[1,3],[2,3],[3,1]]
 #
 # n1 = 3
 # trust1 = [[1,2],[2,3]]
 
-n1 = 4
-trust1 = [[1,3],[1,4],[2,3],[2,4],[4,3]]
+
 
 
 mysolution = Solution()
-print(mysolution.findJudge(n1, trust1))
+print(mysolution.findJudge4(n1, trust1))
