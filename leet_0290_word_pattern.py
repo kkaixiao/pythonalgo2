@@ -49,3 +49,29 @@ class Solution:
         val_st = list(st.values())
         val_pat = list(pat.values())
         return val_st == val_pat
+
+
+    def wordPattern2(self, pattern, str):
+
+
+
+        list1 = list(str.split(' '))
+        if len(list1) != len(pattern):
+            return False
+
+        pat = dict()
+        st = dict()
+        for i in range(len(pattern)):
+            if pattern[i] not in pat:
+                pat[pattern[i]] = [i]
+            else:
+                pat[pattern[i]].append(i)
+
+            if list1[i] not in st:
+                st[list1[i]] = [i]
+            else:
+                st[list1[i]].append(i)
+
+        val_st = list(st.values())
+        val_pat = list(pat.values())
+        return val_st == val_pat
