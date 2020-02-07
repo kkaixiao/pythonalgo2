@@ -23,6 +23,7 @@ class Solution:
         global his
         his = []
         temp = 0
+
         for i in str(n):
             temp += int(i) ** 2
 
