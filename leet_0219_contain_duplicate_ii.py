@@ -19,6 +19,8 @@ Output: false
 
 class Solution:
     def containsNearbyDuplicate(self, nums, k):
+        if len(set(nums)) == len(nums):
+            return False
         dict_nums = dict()
         for i in range(len(nums)):
             curr_arr = dict_nums.get(nums[i], [])
