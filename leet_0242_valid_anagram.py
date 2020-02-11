@@ -34,5 +34,24 @@ class Solution:
         return True
 
 
+    def isAnagram2(self, s, t):
+        if len(s) != len(t):
+            return False
+        dict_s = dict()
+        for char in s:
+            dict_s[char] = dict_s.get(char, 0) + 1
+
+        for char in t:
+            if char in dict_s:
+                dict_s[char] -= 1
+            else:
+                return False
+
+        for v in dict_s.values():
+            if v != 0:
+                return False
+
+        return True
+
 mysol = Solution()
 print(mysol.isAnagram('a','ab'))
