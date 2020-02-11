@@ -36,8 +36,9 @@ class Solution:
 
 
     def missingNumber3(self, nums):
-        sum_with_missing = len(nums) * (1 + len(nums)) // 2
-        return sum_with_missing - sum(nums)
+        # sum_with_missing = len(nums) * (1 + len(nums)) // 2
+        # return sum_with_missing - sum(nums)
+        return len(nums) * (1 + len(nums)) // 2 - sum(nums)
 
 nums1 = [9,6,4,2,3,5,7,0,1]
 
