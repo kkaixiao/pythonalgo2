@@ -26,16 +26,17 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 
 class Solution:
     def hasPathSum(self, root, sum) :
-        # paths = []
-        # paths.append(root.val)
-        #
-        # node = root
-        #
-        # while node.left and node.right:
-        #     while node.left
-        pass
+        if not root:
+            return False
 
-    def iterate_paths(self, root):
-        pass
+        if sum == root.val and not root.left and not root.right:
+            return True
+
+        current = root.val
+
+        return self.hasPathSum(root.left, sum - current) or self.hasPathSum(root.right, sum - current)
+
+    # def iterate_paths(self, root):
+    #     pass
 
 
