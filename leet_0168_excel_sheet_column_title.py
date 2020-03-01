@@ -31,9 +31,11 @@ class Solution:
             return ''
         else:
             # ord('A) is 65
-            return self.convertToTitle((n - 1) // 26) + chr(65 + (n - 1) % 26)
+            current_bit_str = chr(65 + (n - 1) % 26)
+            return self.convertToTitle((n - 1) // 26) + current_bit_str
 
 
-n1 = 53
+
+n1 = 9
 sol = Solution()
 print(sol.convertToTitle(n1))
