@@ -49,8 +49,14 @@ class Solution:
 
         return -1
 
-input1 = [2,2,1,1,1,2,2]
+    def majorityElement4(self, nums):
+        nums.sort()
+        return nums[len(nums)//2]
+
+
+
+input1 = [2,2,1,1,1,1,2]
 
 sol = Solution()
 
-print(sol.majorityElement(input1))
+print(sol.majorityElement4(input1))
