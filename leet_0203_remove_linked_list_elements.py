@@ -24,3 +24,29 @@ class Solution:
             else:
                 node = node.next
         return some_head.next
+
+
+    def removeElements_rec1(self, head: ListNode, val: int) -> ListNode:
+        if not head:
+            return head
+        # print(head, head.next)
+        head.next = self.removeElements(head.next, val)
+        print(head.val)
+        # return head
+        # print(head.next)
+        # return head if head.val != val else head.next
+"""
+    ListNode
+    {val: 1, next: ListNode{val: 2, next: ListNode{val: 6, next: None}}}
+    ListNode
+    {val: 2, next: ListNode{val: 6, next: None}}
+    
+    ListNode
+    {val: 2, next: ListNode{val: 6, next: None}}
+    ListNode
+    {val: 6, next: None}
+    
+    ListNode
+    {val: 6, next: None}
+    None
+"""
