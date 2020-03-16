@@ -61,3 +61,74 @@ class MyStack:
         Returns whether the stack is empty.
         """
         return len(self.q1) == 0
+
+
+
+
+class MyStack2:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.inbox = []
+        self.buffer = []
+
+
+    def push(self, x: int) -> None:
+        """
+        Push element x onto stack.
+        """
+        self.inbox.append( x )
+
+
+    def pop(self) -> int:
+        """
+        Removes the element on top of the stack and returns that element.
+        """
+        while len( self.inbox ) != 0:
+            front_of_inbox = self.inbox.pop( 0 )
+
+            if len( self.inbox ) != 0:
+                self.buffer.append( front_of_inbox )
+            else:
+                top_element = front_of_inbox
+
+
+        # swap inbox and buffer
+        self.inbox, self.buffer = self.buffer, self.inbox
+
+        return top_element
+
+
+
+    def top(self) -> int:
+        """
+        Get the top element.
+        """
+
+        while len( self.inbox ) != 0:
+            front_of_inbox = self.inbox.pop( 0 )
+
+            if len( self.inbox ) != 0:
+                self.buffer.append( front_of_inbox )
+            else:
+                self.buffer.append( front_of_inbox )
+                top_element = front_of_inbox
+
+
+
+        self.inbox, self.buffer = self.buffer, self.inbox
+
+        return top_element
+
+
+    def empty(self) -> bool:
+        """
+        Returns whether the stack is empty.
+        """
+        if len(self.inbox) + len( self.buffer ) == 0:
+            return True
+
+        else:
+            return False
