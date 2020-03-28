@@ -97,8 +97,19 @@ class Solution:
     def recursive(self, start, end):
         if start == end:
             return start
-        mid = (start+end) // 2
+
         if isBadVersion(mid):
-            return self.recursive(start, mid)
+            return self.recursive(start+1, end)
         else:
-            return self.recursive(mid+1, end)
+            return self.recursive(start, end-1)
+
+
+    def recursive_slow(self, start, end):
+        if start == end:
+            return start
+
+        if not isBadVersion(start):
+            return self.recursive(start + 1, end)
+        else:
+
+            return start
