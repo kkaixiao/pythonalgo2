@@ -31,17 +31,43 @@ class Solution:
         :type n: int
         :rtype: int
         """
+        if n == 1:
+            return n
 
-        start_idx = 1
-        end_idx = n + 1
+        start = 1
+        end = n
 
-        while start_idx < end_idx:
+        while start < end:
 
-            mid_idx = (start_idx + end_idx) // 2
+            mid = (start + end) // 2
 
-            if isBadVersion(mid_idx):
-                end_idx = mid_idx
+            if isBadVersion(mid):
+                end = mid
             else:
-                start_idx = mid_idx + 1
+                start = mid + 1
 
-        return start_idx
+        return start
+
+
+    def firstBadVersion2(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+
+        if n == 1:
+            return n
+        start = 1
+        end = n
+        while start <= end:
+            mid = (start + end) // 2
+            if not isBadVersion(mid):
+                if isBadVersion(mid + 1):
+                    return mid + 1
+                start = mid
+            elif isBadVersion(mid):
+                if mid == 1:
+                    return 1
+                elif not isBadVersion(mid - 1):
+                    return mid
+                end = mid
