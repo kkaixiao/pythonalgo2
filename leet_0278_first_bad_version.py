@@ -48,6 +48,25 @@ class Solution:
 
         return start
 
+    def firstBadVersion3(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n == 1:
+            return n
+
+        res = start = 1
+
+
+
+        while start < n:
+            if isBadVersion(res):
+                start = res
+            else:
+                start += 1
+
+        return start
 
     def firstBadVersion2(self, n):
         """
@@ -71,3 +90,15 @@ class Solution:
                 elif not isBadVersion(mid - 1):
                     return mid
                 end = mid
+
+    def firstBadVersion_rec(self, n):
+        return self.recursive(1, n)
+
+    def recursive(self, start, end):
+        if start == end:
+            return start
+        mid = (start+end) // 2
+        if isBadVersion(mid):
+            return self.recursive(start, mid)
+        else:
+            return self.recursive(mid+1, end)
