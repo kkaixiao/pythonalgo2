@@ -18,11 +18,11 @@ class NumArray:
 
     def __init__(self, nums):
         self.arrays = []
-        total = 0
+        sub_sum = 0
 
         for number in nums:
-            total += number
-            self.arrays.append(total)
+            sub_sum += number
+            self.arrays.append(sub_sum)
 
     def sumRange(self, i, j):
         if i == 0:
