@@ -37,3 +37,11 @@ class Solution:
         for i in range(len(s)//2):
             s[i], s[-i-1] = s[-i-1], s[i]
 
+
+    def reverseString_3(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        #pythonic version
+        s[0:] = s[::-1]
+
