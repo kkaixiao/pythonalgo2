@@ -25,6 +25,7 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
+        # this version is very slow
         for i in range(len(s)-2, -1, -1):
             s.append(s[i])
             s.pop(i)
