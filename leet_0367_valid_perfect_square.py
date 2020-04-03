@@ -36,8 +36,7 @@ class Solution:
 
     # a cheating method LOL
     def isPerfectSquare3(self, num: int) -> bool:
-        t = num ** 0.5
-        return (t//1) == t
+        return int(num ** 0.5) == num ** 0.5
 
     # time exceed
     def isPerfectSquare2(self, num: int) -> bool:
