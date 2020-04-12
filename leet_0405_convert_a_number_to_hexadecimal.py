@@ -25,6 +25,7 @@ Output:
 
 
 class Solution:
+    # hashtable approach
     def toHex(self, num: int) -> str:
         if num < 0:
             num = 2 ** 32 + num
@@ -40,3 +41,25 @@ class Solution:
 
         s = mp[num] + s
         return s
+
+    # chr function approach
+    def toHex(self, num: int) -> str:
+        if num < 0:
+            num = 2 ** 32 + num
+        s = ''
+
+        while num > 16:
+            bit = num % 16
+            s = self.bitIntToHex(bit) + s
+            num = num // 16
+
+        return self.bitIntToHex(num) + s
+
+
+    def bitIntToHex(self, num: int) -> str:
+        if 0 <= num <= 9:
+            return chr(num + 48)
+        elif 10 <= num <= 15:
+            return chr(num + 87)
+        elif num == 16:
+            return '10'
