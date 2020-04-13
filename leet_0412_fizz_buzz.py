@@ -44,4 +44,16 @@ class Solution:
             res.append(strTemp)
         return res
 
+    def fizzBuzz(self, n: int) -> List[str]:
+        res = []
 
+        for i in range(1, n + 1):
+            strTemp = str(i)
+            if (i % 3 == 0):
+                strTemp = "Fizz"
+            if (i % 5 == 0):
+                strTemp = "Buzz"
+            if (i % 15 == 0):
+                strTemp = "FizzBuzz"
+            res.append(strTemp)
+        return res
