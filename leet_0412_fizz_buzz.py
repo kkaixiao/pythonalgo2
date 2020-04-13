@@ -34,14 +34,16 @@ class Solution:
         res = []
 
         for i in range(1, n + 1):
-            strTemp = ''
+
             if i % 3 != 0 and i % 5 != 0:
-                strTemp += str(i)
-            elif i % 3 == 0:
-                strTemp += 'Fizz'
-            if i % 5 == 0:
-                strTemp += 'Buzz'
-            res.append(strTemp)
+                res.append(str(i))
+            else:
+                strTemp = ''
+                if i % 3 == 0:
+                    strTemp += 'Fizz'
+                if i % 5 == 0:
+                    strTemp += 'Buzz'
+                res.append(strTemp)
         return res
 
     def fizzBuzz(self, n: int) -> List[str]:
