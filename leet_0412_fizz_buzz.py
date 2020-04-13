@@ -37,7 +37,7 @@ class Solution:
             strTemp = ''
             if i % 3 != 0 and i % 5 != 0:
                 strTemp += str(i)
-            if i % 3 == 0:
+            elif i % 3 == 0:
                 strTemp += 'Fizz'
             if i % 5 == 0:
                 strTemp += 'Buzz'
