@@ -60,7 +60,7 @@ class Solution:
             return max(nums)
         for n in nums:
             heapq.heappush(heap, -n)
-        for i in range(1,3):
+        for i in range(1, 3):
             heapq.heappop(heap)
         return -heapq.heappop(heap)
 
