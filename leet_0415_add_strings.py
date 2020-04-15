@@ -46,7 +46,11 @@ class Solution:
 
         carry = 0
         for i in range(len(num1)):
-            n = num2[i] if i<len(num2) else 0
+            if i < len(num2):
+                n = num2[i]
+            else:
+                n = 0
+
             tmp = n + carry + num1[i]
             num1[i] = tmp%10
             carry = tmp//10
