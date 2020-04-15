@@ -12,11 +12,22 @@ You must not use any built-in BigInteger library or convert the inputs to intege
 
 
 class Solution:
-    # very slow solution using dictionary
+
     def addStrings(self, num1: str, num2: str) -> str:
         return str((self.strToInteger(num1) + self.strToInteger(num2)))
 
     def strToInteger(self, s: str):
+        mapDict = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+        res = 0
+
+        for i in range(len(s)):
+            res *= 10
+            res += mapDict[s[i]]
+
+        return res
+
+    # very slow solution using dictionary
+    def strToInteger_slow(self, s: str):
         mapDict = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
         lStr = len(s)
         res = 0
