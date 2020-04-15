@@ -16,6 +16,7 @@ class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
         return str((self.strToInteger(num1) + self.strToInteger(num2)))
 
+    # faster solution using dictionary
     def strToInteger(self, s: str):
         mapDict = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
         res = 0
