@@ -11,13 +11,15 @@ Output: 5
 """
 class Solution:
     def countSegments(self, s: str) -> int:
-        res = 0
-        start = False
+        if s == '':
+            return 0
+
+        res, start = 0, False
+
         for char in s:
             if char != ' ':
                 if not start:
-                    start = True
-                    res += 1
+                    start, res = True, res + 1
             else:
                 if start:
                     start = False
