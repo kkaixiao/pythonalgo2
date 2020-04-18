@@ -35,3 +35,13 @@ class Solution:
         for i in range(int(math.sqrt(n)), n//2+3):
             if (i * (i-1))/2 >= n:
                 return i-1 - math.ceil(((i * (i-1))/2 - n)/n)
+
+    # my old version, the prior one was evolved from the following one
+    def arrangeCoins(self, n: int) -> int:
+        if n == 0:
+            return 0
+        for i in range(int(math.sqrt(n)), n//2+3):
+            if (i * (i-1))/2 == n:
+                return i-1
+            elif (i * (i-1))/2 > n:
+                return i - 2
