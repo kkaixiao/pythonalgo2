@@ -45,3 +45,26 @@ class Solution:
                 return i-1
             elif (i * (i-1))/2 > n:
                 return i - 2
+
+
+    # the third with binary search, can beat 97%
+
+    def arrangeCoins(self, n: int) -> int:
+        if n <= 0:
+            return 0
+
+        start, end = int(math.sqrt(n)), n // 2 + 2
+        mid = (start + end) // 2
+
+        while start <= end:
+            if mid * (mid + 1) // 2 > n:
+                end = mid - 1
+                mid = (start + end) // 2
+            elif mid * (mid + 1) // 2 < n:
+                start = mid + 1
+                mid = (start + end) // 2
+            else:
+                return mid
+
+        return mid
+
