@@ -14,22 +14,21 @@ Could you solve it using only O(1) extra space?
 
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        def compress(self, chars: List[str]) -> int:
-            i = j = 0
+        i = j = 0
 
-            while j < len(chars):
-                count, k = 1, j + 1
+        while j < len(chars):
+            count, k = 1, j + 1
 
-                while k < len(chars) and chars[j] == chars[k]:
-                    count, k = count + 1, k + 1
+            while k < len(chars) and chars[j] == chars[k]:
+                count, k = count + 1, k + 1
 
-                chars[i] = chars[j]
-                i += 1
+            chars[i] = chars[j]
+            i += 1
 
-                if count > 1:
-                    for char in str(count):
-                        chars[i], i = char, i + 1
+            if count > 1:
+                for char in str(count):
+                    chars[i], i = char, i + 1
 
-                j = k
+            j = k
 
-            return i
+        return i
