@@ -27,13 +27,13 @@ class Solution:
         if x == y:
             return 0
         binx, biny = bin(x)[2:], bin(y)[2:]
-        outlen = max(len(binx), len(biny))
+        maxlen = max(len(binx), len(biny))
 
         # the first zero padding method
-        binx, biny = '%0*d' % (outlen, int(binx)), '%0*d' % (outlen, int(biny))
+        binx, biny = '%0*d' % (maxlen, int(binx)), '%0*d' % (maxlen, int(biny))
 
         # second zero padding method
-        # binx, biny = binx.zfill(outlen), biny.zfill(outlen)
+        # binx, biny = binx.zfill(maxlen), biny.zfill(maxlen)
 
         # third (manual) padding method
         # if len(binx) > len(biny):
@@ -44,7 +44,7 @@ class Solution:
         #         binx = '0' + binx
 
         count = 0
-        for i in range(outlen):
+        for i in range(maxlen):
             if binx[i] != biny[i]:
                 count += 1
 
