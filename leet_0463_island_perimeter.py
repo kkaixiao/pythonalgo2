@@ -67,6 +67,8 @@ class Solution:
                     count += 4
                     if col and grid[row][col-1]:
                         count -= 2
+
                     if row and grid[row-1][col]:
                         count -= 2
+
         return count
