@@ -56,3 +56,17 @@ class Solution:
 
         return count
 
+
+    # 2nd solution
+
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        count = 0
+        for row in range(len(grid)):
+            for col in range(len(grid[row])):
+                if grid[row][col]:
+                    count += 4
+                    if col and grid[row][col-1]:
+                        count -= 2
+                    if row and grid[row-1][col]:
+                        count -= 2
+        return count
