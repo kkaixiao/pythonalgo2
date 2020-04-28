@@ -48,3 +48,11 @@ class Solution:
             num >>= 1
             i += 1
         return res
+
+    # power of 2 with XOR
+    def findComplement(self, num: int) -> int:
+        i = 0
+        while (2 ** i <= num):
+            i += 1
+
+        return num ^ (2 ** i - 1)
