@@ -65,7 +65,7 @@ class Solution:
         else:
             return tempS.upper()
 
-    # the 3rd version, no big chang
+    # the 3rd version, no big change
     def licenseKeyFormatting(self, S: str, K: int) -> str:
         S = S.replace('-', '').upper()
 
@@ -83,3 +83,19 @@ class Solution:
             return tempS[1:]
         else:
             return tempS
+
+    # an improved version, much faster
+    def licenseKeyFormatting(self, S: str, K: int) -> str:
+        arr = []
+
+        S = S.replace('-', '').upper()
+
+        isolateNumber = len(S) % K
+
+        if isolateNumber != 0:
+            arr.append(S[:isolateNumber])
+
+        for i in range(isolateNumber, len(S), K):
+            arr.append(S[i:i + K])
+
+        return '-'.join(arr)
