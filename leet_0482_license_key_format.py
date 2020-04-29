@@ -92,10 +92,12 @@ class Solution:
 
         isolateNumber = len(S) % K
 
+        # isolateNumber is remainder
         if isolateNumber != 0:
             arr.append(S[:isolateNumber])
 
+        # a loop end at K
         for i in range(isolateNumber, len(S), K):
-            arr.append(S[i:i + K])
+            arr.append(S[i: i+K])
 
         return '-'.join(arr)
