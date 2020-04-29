@@ -93,6 +93,7 @@ class Solution:
         isolateNumber = len(S) % K
 
         # isolateNumber is remainder
+        # I add this for removing a redundant '-' added
         if isolateNumber != 0:
             arr.append(S[:isolateNumber])
 
