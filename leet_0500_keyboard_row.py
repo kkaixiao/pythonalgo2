@@ -32,3 +32,22 @@ class Solution:
                 res.append(word)
 
         return res
+
+    # without dictionary
+    def findWords(self, words: List[str]) -> List[str]:
+        upperRow, midRow, lowerRow = 'qwertyuiop', 'asdfghjkl', 'zxcvbnm'
+        res = []
+        for word in words:
+            l = []
+            for c in set(word.lower()):
+                if c in upperRow:
+                    l.append(1)
+                elif c in midRow:
+                    l.append(2)
+                elif c in lowerRow:
+                    l.append(3)
+
+            if len(set(l)) == 1:
+                res.append(word)
+
+        return res
