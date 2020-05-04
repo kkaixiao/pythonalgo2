@@ -28,3 +28,22 @@ class Solution:
             res += str(digits[i])
 
         return res
+
+    # direct string operation without using list
+    def convertToBase7(self, num: int) -> str:
+        if -7 < num < 7:
+            return str(num)
+
+        positive = True
+        if num < 0:
+            positive = False
+        res = ''
+        num = abs(num)
+        while num > 6 or num < -6:
+            res = str(num % 7) + res
+            num //= 7
+
+        res = str(num) + res
+        if not positive:
+            res = '-' + res
+        return res
