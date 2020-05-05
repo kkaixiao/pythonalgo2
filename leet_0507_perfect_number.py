@@ -38,19 +38,36 @@ class Solution:
     # second, much faster
     def checkPerfectNumber(self, num: int) -> bool:
 
-        def checkPerfectNumber(self, num: int) -> bool:
+        if num <= 1:
+            return False
 
-            if num <= 1:
-                return False
+        sumFactors = 1
 
-            sumFactors = 1
+        for i in range(2, ceil(math.sqrt(num))):
+            if num % i == 0:
+                if i == num // i:
+                    sumFactors += i
 
-            for i in range(2, ceil(math.sqrt(num))):
-                if num % i == 0:
-                    if i == num // i:
-                        sumFactors += i
+                else:
+                    sumFactors += (i + num // i)
 
-                    else:
-                        sumFactors += (i + num // i)
+        return sumFactors == num
 
-            return sumFactors == num
+    # third, optimzed
+    def checkPerfectNumber(self, num: int) -> bool:
+
+        if num <= 1:
+            return False
+
+        sumFactors = 1
+
+        floorSqrt = floor(math.sqrt(num))
+        for i in range(2, floorSqrt + 1):
+            if num % i == 0:
+                sumFactors += (i + num // i)
+
+        if floorSqrt ** 2 == num:
+            sumFactors -= floorSqrt
+
+        return sumFactors == num
+
