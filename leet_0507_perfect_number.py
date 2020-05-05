@@ -24,6 +24,17 @@ class Solution:
 
         return sum(divisors) == num
 
+    # same version, but without using list
+    def checkPerfectNumber(self, num: int) -> bool:
+        if num <= 1:
+            return False
+        sumFactors = 1
+        for i in range(2, num//2+1):
+            if num % i == 0:
+                sumFactors += i
+
+        return sumFactors == num
+
     # second, much faster
     def checkPerfectNumber(self, num: int) -> bool:
 
