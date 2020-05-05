@@ -31,7 +31,17 @@ Note:
 """
 
 class Solution:
+    # recursion version
     def fib(self, N: int) -> int:
         if N <= 1:
             return N
         return self.fib(N-1) + self.fib(N-2)
+
+    # iterative version
+    def fib(self, N: int) -> int:
+        a, b = 0, 1
+
+        for i in range(N):
+            a, b = b, a + b
+
+        return a
