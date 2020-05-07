@@ -56,9 +56,8 @@ class Solution:
     def findLUSlength(self, a: str, b: str) -> int:
         return -1 if a == b else max(len(a), len(b))
 
-    # more logical
+    # do not use max function
     def findLUSlength(self, a: str, b: str) -> int:
-
         if len(a) > len(b):
             return len(a)
         if len(a) < len(b):
@@ -66,3 +65,9 @@ class Solution:
         if a.find(b) >= 0:
             return -1
         return len(a)
+
+    # do not use max function (more concise)
+    def findLUSlength(self, a: str, b: str) -> int:
+        if a == b:
+            return -1
+        return len(b) if len(a) <= len(b) else len(a)
