@@ -86,3 +86,42 @@ class Solution:
                 if word[i] == word[i].upper():
                     return False
         return True
+
+    # embedded function
+    def detectCapitalUse(self, word):
+
+        def condition1(word):
+            if word.isupper():
+                return True
+
+        def condition2(word):
+            if word.islower():
+                return True
+
+        def condition3(word):
+            if word[0].isupper() and word[1:].islower():
+                return True
+
+        if condition1(word) or condition2(word) or condition3(word):
+            return True
+        else:
+            return False
+
+    # embedded function
+
+
+    def detectCapitalUse(self, word: str) -> bool:
+        if len(word) <= 1:
+            return True
+        if (word[0].islower()):
+            for a in range(1, len(word)):
+                if (word[a].isupper()):
+                    return False
+        else:
+            onlyLower = True if word[1].islower() else False
+
+            for a in range(2, len(word)):
+                if (onlyLower and word[a].isupper()) or (not onlyLower and word[a].islower()):
+                    return False
+
+        return True
