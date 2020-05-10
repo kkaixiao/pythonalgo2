@@ -22,3 +22,19 @@ class Solution:
             else:
                 res += s[i:i+k]
         return res
+
+    # use my own reverse processing
+    def reverseStr(self, s: str, k: int) -> str:
+        res = ''
+        count=-1
+        for i in range(0, len(s), k):
+            count += 1
+            if count%2 == 0:
+                temp = ''
+                for j in range(len(s[i:i+k])-1, -1, -1):
+                    temp = temp + s[i:i+k][j]
+                res += temp
+
+            else:
+                res += s[i:i+k]
+        return res
