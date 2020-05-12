@@ -21,3 +21,23 @@ class Solution:
                 sentence += word + ' '
                 word = ''
         return sentence + word
+
+    # pythonic stuff added
+    def reverseWords(self, s: str) -> str:
+        words = s.split(' ')
+        res = ''
+        for word in words:
+            res += word[::-1] + ' '
+        return res[:-1]
+
+    # some pythonic stuff removed
+    def reverseWords(self, s: str) -> str:
+        words = s.split(' ')
+        res = ''
+        for word in words:
+            temp = ''
+            for char in word:
+                temp = char + temp
+            res += temp + ' '
+
+        return res[:-1]
