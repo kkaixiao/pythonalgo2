@@ -34,7 +34,12 @@ Given tree t:
  1   2
 Return false.
 """
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 
 class Solution:
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
@@ -53,3 +58,17 @@ class Solution:
         if s.val == t.val and checkVal(s, t):
             return True
         return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
+
+
+class Solution:
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+        # check if string representation of t is a subset of that of s
+        return self.createStrRep(t) in self.createStrRep(s)
+
+    # create string representation for TreeNode
+    def createStrRep(self, root):
+        # if no subNode, return 'n'
+        if not root:
+            return 'n'
+        # if has subNode, add 'y'
+        return 'y' + str(root.val) + '-' + self.createStrRep(root.left) + '-' + self.createStrRep(root.right)
