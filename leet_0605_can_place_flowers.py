@@ -41,12 +41,16 @@ class Solution:
         pre = idxOfOne[0]
         if pre > 1:
             countPlots += int(pre // 2)
+        if countPlots >= n:
+            return True
 
         for j in range(1, len(idxOfOne)):
             distance = idxOfOne[j] - pre
 
             if distance > 3:
                 countPlots += int(distance // 2 - 1)
+            if countPlots >= n:
+                return True
             pre = idxOfOne[j]
         last = len(flowerbed) - idxOfOne[-1]
 
