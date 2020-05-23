@@ -58,3 +58,14 @@ class Solution:
             return True
         return False
 
+    # a smart method, but not as fast as the above
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+
+        augmentedFlowerbed = [0] + flowerbed + [0]
+        count = 0
+        for i in range(len(flowerbed)):
+            if sum(augmentedFlowerbed[i:i+3]) == 0:
+                count += 1
+                augmentedFlowerbed[i+1] = 1
+
+        return True if count>=n else False
