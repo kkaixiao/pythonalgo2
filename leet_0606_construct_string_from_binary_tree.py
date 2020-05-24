@@ -44,17 +44,17 @@ between the input and the output.
 class Solution:
     def tree2str(self, t: TreeNode) -> str:
         if not t:
-            return ""
+            return ''
 
         elif not t.left and not t.right:
             return str(t.val)
 
         else:
 
-            res = str(t.val) + "(" + self.tree2str(t.left) + ")"
+            res = str(t.val) + '(' + self.tree2str(t.left) + ')'
 
             resRight = self.tree2str(t.right)
-            if resRight != "":
-                res += "(" + resRight + ")"
+            if resRight != '':
+                res += '(' + resRight + ')'
 
             return res
