@@ -41,3 +41,7 @@ class Solution:
             elif move == 'D':
                 vertical -= 1
         return horizontal == 0 and vertical == 0
+
+    # using a count approach can be much faster, and one oine
+    def judgeCircle(self, moves: str) -> bool:
+        return True if moves.count('U') == moves.count('D') and moves.count('L') == moves.count('R') else False
