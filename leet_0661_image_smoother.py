@@ -27,12 +27,12 @@ class Solution:
     def imageSmoother(self, M: List[List[int]]) -> List[List[int]]:
         rowNum, colNum = len(M), len(M[0])
 
-        res = [[None] * colNum for i in range(rowNum)]
+        res = [[None] * colNum for _ in range(rowNum)]
 
         for r in range(rowNum):
 
             startRowIdx, endRowIdx, rowDiv = r - 1, r + 1, 3
-            rowDiv = 3
+
             if r == 0:
                 startRowIdx, endRowIdx, rowDiv = 0, 1, 2
             elif r == rowNum - 1:
