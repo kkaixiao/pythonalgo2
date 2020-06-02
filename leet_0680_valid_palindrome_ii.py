@@ -28,3 +28,27 @@ class Solution:
                 return temp == temp[::-1] or temp1 == temp1[::-1]
 
         return True
+
+
+# the following solution "Output Limit Exceeded" or extremely slow
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+
+        for j in range(len(s) // 2):
+            if s[j] != s[len(s) - j - 1]:
+                if (not self.isPalindrome(s[j + 1:len(s) - j])) and (not self.isPalindrome(s[j:len(s) - j - 1])):
+                    return False
+        return True
+
+    def isPalindrome(self, s):
+        if s == s[::-1]:
+            return True
+        else:
+            return False
+
+    def isPalindrome_slow(self, s):
+        for i in range(len(s) // 2):
+            if s[i] != s[len(s) - i - 1]:
+                return False
+
+        return True
