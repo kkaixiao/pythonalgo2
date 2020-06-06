@@ -26,6 +26,7 @@ The binary representation of 10 is: 1010.
 
 
 class Solution:
+    # use bin function to compare values
     def hasAlternatingBits(self, n: int) -> bool:
         if n <= 2:
             return True
@@ -37,3 +38,25 @@ class Solution:
             preChar = binVal[i]
 
         return True
+
+    # with pow function to match value
+    def hasAlternatingBits(self, n: int) -> bool:
+        if n <= 2:
+            return True
+
+        val = 1
+        t = 1
+        while (val < n):
+            val += pow(4, t)
+            if (val == n):
+                return True
+            t += 1
+
+        val = 2
+        t = 1
+        while (val < n):
+            val += pow(4, t) * 2
+            if (val == n):
+                return True
+            t += 1
+        return False
