@@ -39,3 +39,19 @@ class Solution:
                 if minDiff > int(aList[-1]) - int(aList[0]):
                     minDiff = int(aList[-1]) - int(aList[0])
         return minDiff + 1
+
+    # a faster version with starting and end dictionaries
+    def findShortestSubArray(self, nums: List[int]) -> int:
+        c = collections.Counter(nums)
+        start, end = {}, {}
+        for i, num in enumerate(nums):
+            if num not in start:
+                start[num] = i
+            end[num] = i
+        degree, res = 0, len(nums)
+        for num, count in c.most_common():
+            if degree and count != degree:
+                break
+            res = min(res, end[num]-start[num]+1)
+            degree = count
+        return res
