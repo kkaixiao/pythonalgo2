@@ -44,11 +44,13 @@ class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
         c = collections.Counter(nums)
         start, end = {}, {}
+
         for i, num in enumerate(nums):
             if num not in start:
                 start[num] = i
             end[num] = i
         degree, res = 0, len(nums)
+
         for num, count in c.most_common():
             if degree and count != degree:
                 break
