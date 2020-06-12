@@ -43,12 +43,14 @@ class Solution:
 
     # del method
     def isOneBitCharacter(self, bits: List[int]) -> bool:
-        while len(bits) > 1:
-            bit = bits[0]
-            del bits[0]
-            if bit:
-                del bits[0]
+        i = 0
+        while i < len(bits):
+            if bits[i]:
+                i += 2
+                res = False
 
-        if not len(bits):
-            return False
-        return not bits[0]
+            else:
+                i += 1
+                res = True
+
+        return res
