@@ -41,7 +41,7 @@ class Solution:
             return False
         return not bits[0]
 
-    # del method
+    # leap and count bits
     def isOneBitCharacter(self, bits: List[int]) -> bool:
         i = 0
         while i < len(bits):
