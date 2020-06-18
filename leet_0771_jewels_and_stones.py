@@ -26,7 +26,7 @@ class Solution:
         cnt = 0
         for s in S:
             if s in J:
-                cnt+=1
+                cnt += 1
         return cnt
 
     # iterate in J and count occurrences in S
@@ -38,13 +38,13 @@ class Solution:
 
     # using hash table
     def numJewelsInStones(self, J: str, S: str) -> int:
-        dictJ, cnt = {}, 0
+        dic, cnt = {}, 0
 
         for j in J:
-            dictJ[j] = 1
+            dic[j] = 1
 
         for s in S:
-            if s in dictJ.keys():
+            if s in dic.keys():
                 cnt += 1
         return cnt
 
