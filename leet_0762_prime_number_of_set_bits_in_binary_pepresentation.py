@@ -51,9 +51,9 @@ class Solution:
     # normal approach, not fast enough
     def countPrimeSetBits(self, L, R):
         def isPrime(num):
-            if num == 1:
+            if num in [1,4,6,8,9,10,12]:
                 return False
-            if num == 2 or num == 3:
+            if num in [2,3,5,7,11,13]:
                 return True
             for i in range(2, num):
                 if num % i == 0:
