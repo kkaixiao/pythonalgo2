@@ -33,6 +33,7 @@ R - L will be at most 10000.
 
 
 class Solution:
+    # much faster approach
     def countPrimeSetBits(self, L, R):
 
         # given L, R will be integers L <= R in the range [1, 10^6],
@@ -47,8 +48,8 @@ class Solution:
 
         return res
 
+    # normal approach, not fast enough
     def countPrimeSetBits(self, L, R):
-
         def isPrime(num):
             if num == 1:
                 return False
