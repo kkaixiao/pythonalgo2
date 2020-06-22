@@ -54,7 +54,7 @@ class Solution:
 
 
 class Solution:
-    # without the use of hash table
+    # without the use of hash table with the use of Counter class
 
     from collections import Counter
 
