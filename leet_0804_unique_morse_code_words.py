@@ -51,3 +51,23 @@ class Solution:
 
         return len(set(listMorseWords))
 
+
+
+class Solution:
+    # without the use of hash table
+
+    from collections import Counter
+
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        mapMorse = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.",
+                    "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+
+        listMorseWords = []
+
+        for word in words:
+            s = ''
+            for c in word:
+                s += mapMorse[ord(c) - 97]
+            listMorseWords.append(s)
+
+        return len(Counter(listMorseWords).keys())
