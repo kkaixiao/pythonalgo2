@@ -33,3 +33,21 @@ class Solution:
                 disArr[j] = abs(foundIdx[j] - i)
             res[i] = min(disArr)
         return res
+
+
+
+class Solution:
+    # a much faster solution with O(n)
+    def shortestToChar(self, S: str, C: str) -> List[int]:
+        res = []
+        S = ' '+S
+        lMat = 0  # here lMat means: last match
+        for i in range(len(S)):
+            res.append(i-lMat)
+            if S[i] == C:
+                if lMat:
+                    res[(i+lMat)//2 + (i+lMat)%2:] = res[(i + lMat)//2:lMat-1:-1]
+                else:
+                    res[0::1] = res[i::-1]
+                lMat = i
+        return res[1:]
