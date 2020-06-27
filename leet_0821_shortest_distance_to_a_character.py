@@ -18,20 +18,15 @@ All letters in S and C are lowercase.
 
 class Solution:
     def shortestToChar(self, S: str, C: str) -> List[int]:
-        res = [inf] * len(S)
-        foundIdx = []
+        res, foundIdx = [inf] * len(S), []
+
         for i in range(len(S)):
             if S[i] == C:
-                res[i] = 0
                 foundIdx.append(i)
-        if len(foundIdx) == 0:
-            return res
 
-        disArr = [None] * len(foundIdx)
         for i in range(len(res)):
-            for j in range(len(disArr)):
-                disArr[j] = abs(foundIdx[j] - i)
-            res[i] = min(disArr)
+            res[i] = min([abs(foundIdx[x] - i) for x in range(len(foundIdx))])
+
         return res
 
 
