@@ -45,12 +45,12 @@ class Solution:
         words = S.split(' ')
 
         for i in range(len(words)):
-            if words[i]:
-                if words[i][0].lower() in vowels:
-                    res += words[i] + 'ma'
-                else:
-                    res += words[i][1:] + words[i][0] + 'ma'
 
-                res += 'a' * (i + 1) + ' '
+            if words[i][0].lower() in vowels:
+                res += words[i] + 'ma'
+            else:
+                res += words[i][1:] + words[i][0] + 'ma'
+
+            res += 'a' * (i + 1) + ' '
 
         return res[:-1]
