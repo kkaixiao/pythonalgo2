@@ -28,6 +28,20 @@ Notes:
 
 
 class Solution:
+    # negate only when two corresponding points equal
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        w = len(A[0])
+        for row in A:
+
+            for i in range(w // 2):
+                if row[i] == row[w - i - 1]:
+                    row[i], row[w - i - 1] = row[i] ^ 1, row[w - i - 1] ^ 1
+
+        if len(A[0]) % 2:
+            for row in A:
+                row[w // 2] = row[w // 2] ^ 1
+
+        return A
 
     def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
         for row in A:
