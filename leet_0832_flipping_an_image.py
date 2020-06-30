@@ -35,7 +35,7 @@ class Solution:
 
             for i in range(w // 2):
                 if row[i] == row[w - i - 1]:
-                    row[i], row[w - i - 1] = row[i] ^ 1, row[w - i - 1] ^ 1
+                    row[i] = row[w - i - 1] = row[i] ^ 1
 
         if len(A[0]) % 2:
             for row in A:
