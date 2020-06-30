@@ -28,6 +28,19 @@ Notes:
 
 
 class Solution:
+
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        for row in A:
+
+            lHalf, isOdd = len(row)//2, len(row)%2
+
+            row[:lHalf], row[lHalf+isOdd:] = row[lHalf+isOdd:][::-1], row[:lHalf][::-1]
+
+            for i in range(len(row)):
+                row[i] = row[i]^1
+
+        return A
+
     def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
         res = []
         for row in A:
