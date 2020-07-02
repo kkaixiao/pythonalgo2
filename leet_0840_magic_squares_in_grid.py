@@ -40,6 +40,41 @@ class Solution:
             for i in lst:
                 if i < 1 or i > 9:
                     return False
+            c = 3 * lst[4]
+            if c != 15 or lst[4] - lst[0] == 0:
+                return False
+
+            pSet = [[0, 1, 2], [0, 3, 6], [0, 4, 8]]
+            for points in pSet:
+                sumVal = 0
+                for point in points:
+                    sumVal += lst[point]
+                if sumVal != c:
+                    return False
+
+            return True
+
+        rows, cols, cnt = len(grid), len(grid[0]), 0
+
+        for r in range(rows - 2):
+            for c in range(cols - 2):
+                a = []
+                for i in range(3):
+                    for j in range(3):
+                        a.append(grid[r + i][c + j])
+
+                if isMagicSquare(a):
+                    cnt += 1
+
+        return cnt
+
+class Solution:
+    def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
+
+        def isMagicSquare(lst):
+            for i in lst:
+                if i < 1 or i > 9:
+                    return False
             if lst[0] == lst[1]:
                 return False
             if lst[4] != 5:
