@@ -47,3 +47,15 @@ class Solution:
         maxInterSpace = maxInterSpace // 2
 
         return max(maxInterSpace, idxs[0], len(seats) - idxs[-1] - 1)
+
+
+    # two poiners approach, much faster
+    def maxDistToClosest(self, seats: List[int]) -> int:
+
+        left = right = res = 0
+        for right in range(len(seats)):
+            if seats[right] == 1 or right == len(seats) - 1:
+                temp = right - left
+                res = max(res, temp if seats[left] * seats[right] == 0 else temp // 2)
+                left = right
+        return res
