@@ -17,7 +17,6 @@ Example 2:
 Input: [[1,2,3],[4,5,6]]
 Output: [[1,4],[2,5],[3,6]]
 """
-
 class Solution:
     def transpose(self, A: List[List[int]]) -> List[List[int]]:
         rowNum, colNum = len(A), len(A[0])
