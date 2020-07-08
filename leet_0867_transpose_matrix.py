@@ -20,10 +20,23 @@ Output: [[1,4],[2,5],[3,6]]
 class Solution:
     def transpose(self, A: List[List[int]]) -> List[List[int]]:
         rowNum, colNum = len(A), len(A[0])
-        B = []
+        B = [[None] * rowNum for _ in range(colNum)]
         for c in range(colNum):
             aRow = []
             for r in range(rowNum):
                 aRow.append(A[r][c])
             B.append(aRow)
+        return B
+
+    # the 2nd solution with a pre-defined matrix struture
+    def transpose(self, A: List[List[int]]) -> List[List[int]]:
+
+        rowNum, colNum = len(A), len(A[0])
+
+        B = [[None] * rowNum for _ in range(colNum)]
+
+        for c in range(colNum):
+            for r in range(rowNum):
+                B[c][r] = A[r][c]
+
         return B
