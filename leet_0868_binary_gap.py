@@ -55,3 +55,15 @@ class Solution:
                 preOne = i
 
         return res
+
+    class Solution:
+        def binaryGap(self, N: int) -> int:
+            preOne, res = 0, []
+
+            for i, c in enumerate(bin(N)[1:]):
+                if c == '1':
+                    if preOne:
+                        res.append(i - preOne)
+                    preOne = i
+
+            return max(res) if res else 0
