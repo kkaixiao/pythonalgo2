@@ -27,14 +27,14 @@ Both of the given trees will have values between 0 and 200
 #         self.right = right
 class Solution:
     def leafSimilar(self, root1, root2):
-        def depthFirstSearch(root, L):
+        def depthFirstSearch(root, l):
             if root:
                 if not root.left and not root.right:
-                    L.append(root.val)
+                    l.append(root.val)
                 if root.left:
-                    depthFirstSearch(root.left, L)
+                    depthFirstSearch(root.left, l)
                 if root.right:
-                    depthFirstSearch(root.right, L)
+                    depthFirstSearch(root.right, l)
 
         l1, l2 = [], []
 
