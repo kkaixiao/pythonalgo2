@@ -1,3 +1,5 @@
+
+# designed for Shirlene in 2020
 import random
 
 nPlus = 8
