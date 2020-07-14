@@ -58,7 +58,6 @@ class Solution:
             if (numA - diff//2) in B:
                 return [numA, numA - diff//2]
 
-
     # this method is better, but still slow
     def fairCandySwap(self, A: List[int], B: List[int]) -> List[int]:
         sumA, sumB = sum(A), sum(B)
