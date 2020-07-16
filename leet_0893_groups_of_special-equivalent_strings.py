@@ -54,6 +54,10 @@ class Solution:
 
             return ''.join(sorted(evenStr) + sorted(oddStr))
 
-        return len(set([createEquivalents(s) for s in A]))
+        res = []
+        for s in A:
+            res.append(createEquivalents(s))
+
+        return len(set(res))
 
 
