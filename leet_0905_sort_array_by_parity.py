@@ -47,3 +47,12 @@ class Solution:
             A[left], A[right] = A[right], A[left]
 
         return A
+
+    # the third method without combining lists in the end
+    def sortArrayByParity(self, A: List[int]) -> List[int]:
+        j = 0
+        for i in range(len(A)):
+            if A[i]%2==0:
+                A[i], A[j] = A[j], A[i]
+                j+=1
+        return A
