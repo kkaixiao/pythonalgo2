@@ -28,13 +28,13 @@ class Solution:
 
         for letter in S:
             index = ord(letter) - 97
-            difference = units - widths[index]
+            diff = units - widths[index]
 
-            if (difference < 0):
+            if (diff < 0):
                 line += 1
                 units = 100 - widths[index]
             else:
-                units = difference
+                units = diff
 
         count = 100 - units
 
