@@ -26,18 +26,22 @@ A.length == 4
 
 from itertools import permutations
 
+
 class Solution:
     def largestTimeFromDigits(self, A: List[int]) -> str:
         perms = permutations(A)
         validTime = []
+
         for perm in list(perms):
-            hours = perm[0]*10 + perm[1]
-            minutes = perm[2]*10 + perm[3]
-            if (0<=hours <= 23) and (0<=minutes<=59):
-                validTime.append(perm[0]*1000+perm[1]*100+perm[2]*10+perm[3])
+
+            hours, minutes = perm[0] * 10 + perm[1], perm[2] * 10 + perm[3]
+
+            if (0 <= hours <= 23) and (0 <= minutes <= 59):
+                validTime.append(perm[0] * 1000 + perm[1] * 100 + perm[2] * 10 + perm[3])
+
         if len(validTime) == 0:
             return ''
-        maxTime = max(validTime)
-        maxTimeStr = format(maxTime, '04d')
-        res = maxTimeStr[:2] + ':' + maxTimeStr[2:]
-        return res
+
+        maxTimeStr = format(max(validTime), '04d')
+
+        return maxTimeStr[:2] + ':' + maxTimeStr[2:]
