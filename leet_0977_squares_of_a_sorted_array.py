@@ -24,13 +24,13 @@ A is sorted in non-decreasing order.
 class Solution:
     def sortedSquares(self, A: List[int]) -> List[int]:
         f = lambda x: x*x
-        A = [f(z) for z in A ]
+        A = [f(z) for z in A]
         return sorted(A)
 
     # two pointer
     def sortedSquares(self, A: List[int]) -> List[int]:
-        A.sort()
-        start, end, endPointer = 0, len(A) - 1, len(A) - 1
+        # A.sort()
+        start, end, ptr = 0, len(A) - 1, len(A) - 1
         res = [None] * len(A)
 
         while end >= start:
@@ -38,13 +38,13 @@ class Solution:
             rightSquare = A[end] * A[end]
 
             if rightSquare > leftSquare:
-                res[endPointer] = rightSquare
-                endPointer -= 1
+                res[ptr] = rightSquare
+                ptr -= 1
                 end -= 1
 
             else:
-                res[endPointer] = leftSquare
-                endPointer -= 1
+                res[ptr] = leftSquare
+                ptr -= 1
                 start += 1
 
         return res
