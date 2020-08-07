@@ -26,3 +26,25 @@ class Solution:
         f = lambda x: x*x
         A = [f(z) for z in A ]
         return sorted(A)
+
+    # two pointer
+    def sortedSquares(self, A: List[int]) -> List[int]:
+        A.sort()
+        start, end, endPointer = 0, len(A) - 1, len(A) - 1
+        res = [None] * len(A)
+
+        while end >= start:
+            leftSquare = A[start] * A[start]
+            rightSquare = A[end] * A[end]
+
+            if rightSquare > leftSquare:
+                res[endPointer] = rightSquare
+                endPointer -= 1
+                end -= 1
+
+            else:
+                res[endPointer] = leftSquare
+                endPointer -= 1
+                start += 1
+
+        return res
