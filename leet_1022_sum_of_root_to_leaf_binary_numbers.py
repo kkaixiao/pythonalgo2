@@ -32,10 +32,11 @@ The answer will not exceed 2^31 - 1.
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def sumRootToLeaf(self, root: TreeNode) -> int:
 
-        self.pathes, self.binarySum = [], 0
+        self.binarySum = 0
 
         def goThrough(node, pathStr):
 
@@ -47,7 +48,6 @@ class Solution:
 
             if not node.left and not node.right:
                 pathStr += str(node.val)
-                self.pathes.append(pathStr)
                 self.binarySum += int(pathStr, 2)
 
         goThrough(root, "")
