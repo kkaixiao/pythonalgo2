@@ -33,3 +33,15 @@ class Solution:
     def divisorGame(self, N: int) -> bool:
         # only even N wins
         return N%2 == 0
+
+    # dynamic programming
+    def divisorGame(self, N: int) -> bool:
+        dynicProg = [0 for i in range(N)]
+        dynicProg[0] = 1
+
+        for i in range(3, N + 1):
+            K = i & 1
+            K -= 2
+            dynicProg[i - 1] = -(dynicProg[i + K] - 1)
+
+        return dynicProg[-1] == 0
