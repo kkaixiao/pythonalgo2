@@ -39,4 +39,4 @@ class Solution:
         costDifferentList.sort(reverse=True)
 
         # len(costs)//2 is the people number
-        return (totalCosts - sum(costDifferentList[0:len(costs) // 2]))
+        return totalCosts - sum(costDifferentList[0:len(costs) // 2])
