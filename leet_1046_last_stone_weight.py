@@ -36,3 +36,27 @@ class Solution:
             if y-x:
                 stones.append(y-x)
         return stones[0] if len(stones) else 0
+
+
+
+# implementation using heap
+import heapq
+
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        for i in range(len(stones)):
+            stones[i] = -stones[i]
+
+        heapq.heapify(stones)
+
+        while len(stones) != 0:
+            smallest = heapq.heappop(stones)
+
+            if len(stones) == 0:
+                return -smallest
+            else:
+                second = heapq.heappop(stones)
+
+            if smallest != second:
+                heapq.heappush(stones, (smallest - (second)))
+
+        return 0
