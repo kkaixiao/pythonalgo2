@@ -27,20 +27,11 @@ Note:
 1 <= stones[i] <= 1000
 """
 
-class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
-        while len(stones) > 1:
-            stones.sort()
-            y = stones.pop()
-            x = stones.pop()
-            if y-x:
-                stones.append(y-x)
-        return stones[0] if len(stones) else 0
-
-
-
-# implementation using heap
 import heapq
+class Solution:
+
+    # implementation using heap
+
 
     def lastStoneWeight(self, stones: List[int]) -> int:
         for i in range(len(stones)):
@@ -60,3 +51,14 @@ import heapq
                 heapq.heappush(stones, (smallest - (second)))
 
         return 0
+
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        while len(stones) > 1:
+            stones.sort()
+            y = stones.pop()
+            x = stones.pop()
+            if y-x:
+                stones.append(y-x)
+        return stones[0] if len(stones) else 0
+
+
