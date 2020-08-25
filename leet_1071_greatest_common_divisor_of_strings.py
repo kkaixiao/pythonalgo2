@@ -31,28 +31,23 @@ str1[i] and str2[i] are English uppercase letters.
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
 
-        def divisable(strTop, strSub):
-            lSub = len(strSub)
+        def isGCD(strA, strB):
 
-            for i in range(int(len(strTop) / lSub)):
-                if strTop[i * lSub:(i + 1) * lSub] != strSub:
+            times, patlen = len(strA) // len(strB), len(strB)
+            for i in range(times):
+                if strA[i * patlen:i * patlen + patlen] != strB:
                     return False
-
             return True
 
         l1, l2 = len(str1), len(str2)
-
-        if l1 > l2:
+        if len(str1) < len(str2):
             str1, str2 = str2, str1
             l1, l2 = l2, l1
 
-        res = ""
+        for i in range(l2 - 1, -1, -1):
+            compareStr = str2[:i + 1]
 
-        for l in range(l1, 1, -1):
-            if l1 % l == 0 and l2 % l == 0:
-
-                sub = str1[0:l]
-                if divisable(str1, sub) and divisable(str2, sub):
-                    return sub
-
-        return res
+            if l1 % len(compareStr) == 0 and l2 % len(compareStr) == 0:
+                if isGCD(str1, compareStr) and isGCD(str2, compareStr):
+                    return compareStr
+        return ''
