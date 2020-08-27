@@ -32,14 +32,12 @@ class Solution:
         """
         Do not return anything, modify arr in-place instead.
         """
-        strTemp = ''.join([str(i) for i in arr])
-        arrTemp = ''
-        for c in strTemp:
+        strCopy = ''.join([str(i) for i in arr])
+        strTemp = ''
+        for c in strCopy:
             if c != '0':
-                arrTemp = arrTemp + c
+                strTemp = strTemp + c
             else:
-                arrTemp = arrTemp + '00'
+                strTemp += '00'
 
-        arrTemp = arrTemp[:len(arr)]
-
-        arr[:] = list(arrTemp)
+        arr[:] = list(strTemp[:len(arr)])
