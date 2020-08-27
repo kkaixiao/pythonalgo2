@@ -34,10 +34,12 @@ class Solution:
         """
         strCopy = ''.join([str(i) for i in arr])
         strTemp = ''
+
         for c in strCopy:
             if c != '0':
-                strTemp = strTemp + c
+                strTemp += c
             else:
                 strTemp += '00'
 
         arr[:] = list(strTemp[:len(arr)])
+
