@@ -32,12 +32,28 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         if n == 0:
             return 0
-        if n == 1:
-            return 1
-        if n == 2:
+        if n <= 2:
             return 1
 
         return self.tribonacci(n - 1) + self.tribonacci(n - 2) + self.tribonacci(n - 3)
+
+
+    # recursion with memoization succeeded
+    maps = {}
+
+    def tribonacci(self, n: int) -> int:
+
+        if n == 0:
+            return 0
+        if n <= 2:
+            return 1
+
+        if n in self.maps:
+            return self.maps[n]
+
+        self.maps[n] = self.tribonacci(n - 1) + self.tribonacci(n - 2) + self.tribonacci(n - 3)
+
+        return self.maps[n]
 
     # iteration method succeeded
     def tribonacci(self, n: int) -> int:
