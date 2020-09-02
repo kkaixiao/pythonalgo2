@@ -22,7 +22,7 @@ Input: date = "2004-03-01"
 Output: 61
 
 
-Constraints:
+Constraints:9
 
 date.length == 10
 date[4] == date[7] == '-', and all other date[i]'s are digits
