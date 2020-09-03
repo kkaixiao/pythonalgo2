@@ -53,4 +53,16 @@ class Solution:
 
         return res
 
+    # combined f function (into an array) with binary search approach
+    def numSmallerByFrequency(self, queries: List[str], words: List[str]) -> List[int]:
+        f = sorted([w.count(min(w)) for w in words])
+
+        res = []
+
+        for query in queries:
+            cur = query.count(min(query))
+            idx = bisect.bisect(f, cur)
+            res.append(len(f) - idx)
+
+        return res
 
