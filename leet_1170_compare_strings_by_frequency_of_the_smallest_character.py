@@ -46,11 +46,10 @@ class Solution:
 
         res = [0] * len(qCounts)
         for i in range(len(qCounts)):
-            cnt = 0
+
             for wCount in wCounts:
                 if qCounts[i] < wCount:
-                    cnt += 1
-            res[i] = cnt
+                    res[i] += 1
 
         return res
 
