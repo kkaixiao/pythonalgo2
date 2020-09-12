@@ -31,3 +31,32 @@ Input: function_id = 2, z = 5
 Output: [[1,5],[5,1]]
 Explanation: function_id = 2 means that f(x, y) = x * y
 """
+
+"""
+   This is the custom function interface.
+   You should not implement it, or speculate about its implementation
+   class CustomFunction:
+       # Returns f(x, y) for any given positive integers x and y.
+       # Note that f(x, y) is increasing with respect to both x and y.
+       # i.e. f(x, y) < f(x + 1, y), f(x, y) < f(x, y + 1)
+       def f(self, x, y):
+
+"""
+
+
+class Solution:
+    def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
+        res = []
+        upper = 1000
+        for i in range(1, 1001):
+            left, right = 1, upper
+            while left < right:
+                mid = (left + right) // 2
+                if customfunction.f(i, mid) < z:
+                    left = mid + 1
+                else:
+                    right = mid
+            if customfunction.f(i, left) == z:
+                res.append([i, left])
+                upper = left
+        return res
