@@ -46,8 +46,8 @@ Explanation: function_id = 2 means that f(x, y) = x * y
 
 class Solution:
     def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
-        res = []
-        upper = 1000
+        res, upper = [], 1000
+
         for i in range(1, 1001):
             left, right = 1, upper
 
