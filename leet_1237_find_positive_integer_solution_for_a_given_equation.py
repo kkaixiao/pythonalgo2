@@ -46,9 +46,9 @@ Explanation: function_id = 2 means that f(x, y) = x * y
 
 class Solution:
     def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
-        res, upper = [], 1000
+        res, upper, i = [], 1000, 1
 
-        for i in range(1, 1001):
+        while i <= upper:
             left, right = 1, upper
 
             while left < right:
@@ -61,4 +61,26 @@ class Solution:
             if customfunction.f(i, left) == z:
                 res.append([i, left])
                 upper = left
+
+            i += 1
+
+        return res
+
+    # lower the upper bound and become faster :)
+    def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
+        res, upper, i = [], 1000, 1
+
+        while i < 101:
+            left, right = 1, upper
+            while left < right:
+                mid = (left + right) // 2
+                if customfunction.f(i, mid) < z:
+                    left = mid + 1
+                else:
+                    right = mid
+            if customfunction.f(i, left) == z:
+                res.append([i, left])
+                upper = left
+            i += 1
+
         return res
