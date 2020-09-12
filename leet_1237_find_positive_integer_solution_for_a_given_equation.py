@@ -50,12 +50,14 @@ class Solution:
         upper = 1000
         for i in range(1, 1001):
             left, right = 1, upper
+
             while left < right:
                 mid = (left + right) // 2
                 if customfunction.f(i, mid) < z:
                     left = mid + 1
                 else:
                     right = mid
+
             if customfunction.f(i, left) == z:
                 res.append([i, left])
                 upper = left
