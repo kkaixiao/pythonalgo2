@@ -55,16 +55,16 @@ class Solution:
             return [1, n - 1]
 
         digits = math.floor(math.log10(n)) + 1  # get digit number
-        a = 10 ** (digits - 1) - 1  # assign a to be all '9' digits
-        b = n - a
-        b2 = b  # set b to be n-a
+        item1 = 10 ** (digits - 1) - 1  # assign item1 to be all '9' digits
+        item2 = n - item1
+        item2rem = item2  # set item2 to be n-itme1
 
-        # iteratively checking digits in b
+        # iteratively checking digits in item2
         for i in range(digits - 1):
-            dLast = b2 % 10
+            dLast = item2rem % 10
             if not dLast:
-                a -= 10 ** i
-                b += 10 ** i
-            b2 = (b2 - dLast) // 10
+                item1 -= 10 ** i
+                item2 += 10 ** i
+            item2rem = (item2rem - dLast) // 10
 
-        return [a, b]
+        return [item1, item2]
