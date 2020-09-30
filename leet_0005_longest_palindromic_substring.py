@@ -37,16 +37,14 @@ class Solution(object):
                     return s[head: tail]
 
 
-"""
-Very fast solution, beats 98%.
-This solution is similar to O(n^3) bruteforce, but uses approach that we doesn't need to check 
-substrings shorter than current max_palindrom. On each iteration we enough to check only two 
-substrings: [i - len(max_palindrom) - 1 : i + 1] and [i - len(max_palindrom) : i + 1]. Thus it 
-has O(n^2) time complexity.
-"""
-
-
+    # Very fast solution, beats 98%.
     def longestPalindrome(self, s: str) -> str:
+        """
+        This solution is similar to O(n^3) bruteforce, but uses approach that we doesn't need to check
+        substrings shorter than current max_palindrom. On each iteration we enough to check only two
+        substrings: [i - len(max_palindrom) - 1 : i + 1] and [i - len(max_palindrom) : i + 1]. Thus it
+        has O(n^2) time complexity.
+        """
         max_palindrome = ''
         for i in range(0, len(s)):
             # we will need to check substrings, that are longer than max_palindrome
