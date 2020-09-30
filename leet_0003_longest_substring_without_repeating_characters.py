@@ -38,7 +38,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        sub, len_sub = '', 0
+        sub, max_len_sub = '', 0
 
         for c in s:
             if c in sub:
@@ -46,7 +46,7 @@ class Solution(object):
 
             sub += c
 
-            if len(sub) > len_sub:
-                len_sub = len(sub)
+            if len(sub) > max_len_sub:
+                max_len_sub = len(sub)
 
-        return len_sub
+        return max_len_sub
