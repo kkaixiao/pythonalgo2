@@ -1,1 +1,1 @@
-This repo only serves as a track on stuff I have been learning.
+algorithms imeplemented by python, mainly from leetcode.com
