@@ -32,16 +32,25 @@ Note:
 
 class Solution:
     # recursion version
-    def fib(self, N: int) -> int:
-        if N <= 1:
-            return N
-        return self.fib(N-1) + self.fib(N-2)
+    def fib_rec(self, n: int) -> int:
+        if n <= 1:
+            return n
+        return self.fib_rec(n-1) + self.fib_rec(n-2)
 
     # iterative version
-    def fib(self, N: int) -> int:
+    def fib_iter(self, n: int) -> int:
         a, b = 0, 1
 
-        for i in range(N):
+        for i in range(n):
             a, b = b, a + b
 
         return a
+
+
+    def fib_tail(self, n, a=0, b=1):
+        if n == 0:
+            return a
+        if n == 1:
+            return b
+
+        return self.fib_tail(n - 1, b, a + b)
