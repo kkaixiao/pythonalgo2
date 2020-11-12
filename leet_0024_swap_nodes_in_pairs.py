@@ -27,16 +27,13 @@ Output: [1]
 #         self.next = next
 class Solution(object):
     def swapPairs(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        if head == None:
-            return None
-        if head.next == None:
+        if not head or (head and not head.next):
             return head
-        first = head
-        second = head.next
-        first.next = self.swapPairs(second.next)
-        second.next = first
-        return second
+
+        tmp = head.next
+
+        head.next = self.swapPairs(head.next.next)
+
+        tmp.next = head
+
+        return tmp
