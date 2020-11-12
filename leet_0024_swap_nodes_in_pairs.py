@@ -25,6 +25,8 @@ Output: [1]
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+# recursion
 class Solution(object):
     def swapPairs(self, head):
         if not head or (head and not head.next):
@@ -37,3 +39,32 @@ class Solution(object):
         tmp.next = head
 
         return tmp
+
+
+# iteration
+class Solution(object):
+    def swapPairs(self, head):
+        if not head or not head.next:
+            return head
+
+        temp = head
+        head = head.next
+        while True:
+
+            if not temp or not temp.next:
+                break
+
+            temp2 = temp.next.next
+            temp.next.next = temp
+            # if no. of nodes are even
+            if not temp2:
+                temp.next = None
+            # if no. of nodes are odd
+            elif not temp2.next:
+                temp.next = temp2
+
+            else:
+                temp.next = temp2.next
+            temp = temp2
+
+        return head
