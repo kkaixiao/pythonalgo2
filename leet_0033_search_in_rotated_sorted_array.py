@@ -34,25 +34,22 @@ nums is guranteed to be rotated at some pivot.
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        rot_idx = 0
+        ridx = 0
         prev = nums[0]
         for i in range(1, len(nums)):
             if prev > nums[i]:
-                rot_idx = i
+                ridx = i
                 break
             prev = nums[i]
 
-        new_nums = []
-        for num in nums[rot_idx:]:
-            new_nums.append(num)
-        for num in nums[:rot_idx]:
-            new_nums.append(num)
+        new_nums = nums[ridx:].copy()
+        new_nums.extend(nums[:ridx])
 
         l, r = 0, len(new_nums) - 1
         while l <= r:
             m = (l + r) // 2
             if new_nums[m] == target:
-                return (m + rot_idx) % len(nums)
+                return (m + ridx) % len(nums)
             elif new_nums[m] > target:
                 r = m - 1
             else:
