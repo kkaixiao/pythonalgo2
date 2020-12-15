@@ -13,6 +13,14 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 """
 
+# solution in my review
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        if len(nums) == 2:
+            return [0, 1]
+        for i, num in enumerate(nums):
+            if (target - num) in nums[i+1:]:
+                return [i, nums[i+1:].index(target-num)+1+i]
 
 class Solution:
     # try | exception with index search method # not good
