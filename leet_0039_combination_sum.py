@@ -45,12 +45,15 @@ All elements of candidates are distinct.
 1 <= target <= 500
 """
 
+
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        dp = [[] for _ in range(target+1)]
+        dp = [[] for _ in range(target + 1)]
         for candidate in candidates:
-            for i in range(candidate, target+1):
+            for i in range(candidate, target + 1):
                 if i == candidate:
                     dp[i].append([candidate])
-                for combination in dp[i-candidate]: dp[i].append(combination + [candidate])
+
+                for combination in dp[i - candidate]:
+                    dp[i].append(combination + [candidate])
         return dp[-1]
