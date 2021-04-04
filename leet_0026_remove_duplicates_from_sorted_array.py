@@ -46,7 +46,7 @@ class Solution:
                 nums[index_i + 1] = nums[i]
                 index_i += 1
 
-        print(ret_list)
+        #print(ret_list)
         return len(ret_list)
 
 
