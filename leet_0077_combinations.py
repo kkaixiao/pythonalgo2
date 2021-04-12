@@ -37,23 +37,23 @@ class Solution:
         :type k: int
         :rtype: List[List[int]]
         """
-        l2 = self.comb_func(n, k);
-        return l2;
+        l2 = self.comb_func(n, k)
+        return l2
 
     def comb_func(self, n, k):
         if k == n:
             return [[i for i in range(1, k + 1)]];
 
         if k == 0:
-            return [[]];
+            return [[]]
 
-        l1 = self.comb_func(n - 1, k - 1);
+        l1 = self.comb_func(n - 1, k - 1)
 
         for ls in l1:
-            ls += [n];
+            ls += [n]
 
-        l2 = self.comb_func(n - 1, k);
+        l2 = self.comb_func(n - 1, k)
 
-        l2.extend(l1);
+        l2.extend(l1)
 
-        return l2;
+        return l2
