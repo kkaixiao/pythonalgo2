@@ -31,8 +31,6 @@ n == nums.length
 nums[i] is 0, 1, or 2.
 """
 
-Andrea M. Juarez‐Lucas  Kelly M. Kibler  Takahiro Sayama  Miho Ohara
-
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
         """
